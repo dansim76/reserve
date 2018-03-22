@@ -39,18 +39,31 @@
                 </div><!-- /.container-fluid -->
             </nav>                          
             <br>
-            <div class= "container">
+            <div class ="container">
                 <div class="row">
-                    <div class ="col-lg-12">
-                        <div class="jumbotron">
-                            <h1 style="font-family:'Monoton',cursive">reServe</h1>
-                            <p style="font-family:'Montserrat',sans-serif">Stop the hunger all year long</p>
-                            <p style="font-family:'Montserrat',sans-serif">This year, join a community of people giving unused items to people in need.</p>
-                            <p><a class="btn btn-primary btn-lg" href="#" role="button">Lets get started</a></p>
-                        </div>
+                    <div class="col-md-12 blog-container">
+                            <h1>Sign Up!</h1>
+
+                            <form action="/register" method="post">
+                                
+                                <input type="radio" name="grocery" value="Grocery" checked> Grocery<br>
+                                <input type="radio" name="foodpantry" value="Food Pantry">Food Pantry<br>
+                                <input type="text" name="username" placeholder="username">
+                                <input type="password" name="password" placeholder="password">
+                                <button>Sign up</button>
+                            
+                            
+                            </form>
+                    
+                    
                     </div>
-                </div>
+                </div>      
             </div>
+
+
+
+
+
             <footer>
                 <p class="text-muted text-muted-footer text-center">
                     <small>
