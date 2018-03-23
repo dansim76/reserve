@@ -16,8 +16,18 @@ router.get("/", function(req, res) {
   });
 });
 
+router.get("/register", function(req, res) {
+  user.all(function(data) {
+    var hbsObject = {
+      stores: data
+    };
+    console.log(hbsObject);
+    res.render("register", hbsObject);
+  });
+});
+
 // router.post("/api/users", function(req, res) {
-//   user.create([
+//   stores.create([
 //     "name", "sleepy"
 //   ], [
 //     req.body.name, req.body.sleepy
