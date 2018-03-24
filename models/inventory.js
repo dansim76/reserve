@@ -1,20 +1,36 @@
-//this script for creating sequeqlize model
-//for the inventory table in reserve database
+'use strict';
 
-//reference structure:
 module.exports = function(sequelize, DataTypes) {
-  var  = sequelize.define("Author", {
-    // Giving the Author model a name of type STRING
-    name: DataTypes.STRING
+  var inventory = sequelize.define("invetory", {
+    item: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1,100]
+      }
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    expiration: {
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW
+    }
+
   });
 
-  Author.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
-    Author.hasMany(models.Post, {
-      onDelete: "cascade"
+  Post.associate = function (models){ //this will create a foreign key
+    models.inventory.belongsTo(models.stores,{
+      onDelete: "CASCADE", //deletes everything that depends on this foreign key
+      foreignKey: {
+        allowNull: false
+      }
     });
   };
 
-  return Author;
+  // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
+  //http://docs.sequelizejs.com/manual/tutorial/associations.html
+  return invetory;
 };
