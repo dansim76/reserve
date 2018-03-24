@@ -1,62 +1,160 @@
 <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Reserve</title>
+<html lang="en-us">
 
-            <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
-            <link rel="stylesheet" href="./css/style.css" media="screen" title="no title">
-            <script src="https://code.jquery.com/jquery.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-            <link href="https://fonts.googleapis.com/css?family=Monoton|Montserrat" rel="stylesheet">
-        </head>
-        <body id="first-page" style ="background-image: url(./images/new.jpg)">   
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="https://ibb.co/hH4skx">reServe</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">   
-                            <li><a href="#">why reServe?</a></li>
-                            <li><a href="#">about us</a></li> 
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/signup">Sign-Up</a></li>
-                            <li><a href="/register">Give</a></li>
-                            <li><a href="/survey">Receive</a></li>
-                            <li><a href="/logout">Log out</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>                          
-            <br>
-            <div class= "container">
-                <div class="row">
-                    <div class ="col-lg-12">
-                        <div class="jumbotron">
-                            <h1 style="font-family:'Monoton',cursive">reServe</h1>
-                            <p style="font-family:'Montserrat',sans-serif">Stop the hunger all year long</p>
-                            <p style="font-family:'Montserrat',sans-serif">This year, join a community of people giving unused items to people in need.</p>
-                            <p><a class="btn btn-primary btn-lg" href="#" role="button">Lets get started</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer>
-                <p class="text-muted text-muted-footer text-center">
-                    <small>
-                        &copy; Copyright 2018 reServe. All Rights Reserved
-                    </small>
-                </p>
-            </footer>
-        </body>
-    </html>
+<head>
+
+  <meta charset="UTF-8">
+  <title>Create Activity</title>
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Script -->
+  <script src="./js/grocery.js"></script>
+
+  <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/newActivity.css">
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvlvuBqoM_v-3KtJRu2REtvHxxU2995So&libraries=places&callback=initAutocomplete" async defer></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+  <br>
+
+  <!-- Add an Employee -->
+  <div class="row">
+    <div id="homeIcon"><a href="reserve.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHUSURBVHhe7ZJtasNADERzpd6mf9uT9OANrQUZMIucnZk49trWg4HE0Ys+8K0oiqLYj89HLsnXlN9H4vOl+J5yn/L3SHyOZ5egXf5SR1haHjn1EbLl43v27HRHWFo+nj/77RQwC572CMpipzuCs9BpjvDKIoc/whoLHPYIaw5+uCO8Y+DDHOGdgw5/hC0GHPYIWw423BH2GGiYI+w5yO5H2H2Aid1mGGF5sPksIy0PNptpxOXB22fLGkRGWB7ELO18qxxhafnIaGQzvnSEZ8tHRiObMWIdobd8ZDSyGRHpCB9T2uWzY7C0nhqW1st2iN0ofqbMxbje/M8iLK2nhqX12rc4dpIIAcsH8z+PsLSeGpbMwxHk5cH8lckaMLSeGpYlj37teyw16KF6aj1wPRq3geqp9cD1aNwGqqfWA9ejcRuonloPXI/GbaB6aj1wPRq3geqp9cD1aNwGqqfWA9ejcRuonloPXI/GbaB6aj1wPRq3geqp9cD1aNwGqqfWA9ejcRuonloPXI/GbaB6aj1wPRq3geqp9cD1aNwGqqfWA9ejcRuonloPXI+mbeCmR+Y4WZ2siZMemeNkdbImTnpkjpPVyZo46ZE5ToqiKIqiKJ5wu/0DVUEhGPDYUhQAAAAASUVORK5CYII=" style= "width: 40px;"></a></div>
+    <div class="col-lg-12">
+
+      <div class="panel panel- createActivityBox">
+        <div class="panel-heading">
+          <h3 class="panel-title">Create Activity</h3>
+        </div>
+
+        <div class="panel-body">
+
+        <form>
+          <div class="form-group">
+            <label for="name">Activity Name</label>
+            <input class="form-control" id="name" type="text">
+            <span class="error"></span>
+          </div>
+
+          <div id="locationField">
+            <label for="type">Search address or location: </label><br>
+            <input class="form-control" id="autocomplete" placeholder="Search Here"
+                   onFocus="geolocate()" type="text" style="width: 100%"></input>
+          </div>
+          <br>
+
+          <table class="table" id="address">
+            <tr>
+              <td class="slimField">
+                <label for="type">Address Number</label>
+                <br>
+                <input class="field" id="street_number" disabled="true"></input>
+              </td>
+
+              <td class="wideField" colspan="2">
+                <label for="type">Street Name</label>
+                <br>
+                <input class="field" id="route" disabled="true"></input>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="wideField" colspan="2">
+                <label for="type">City</label>
+                <br>
+                <input class="field" id="locality" disabled="true"></input>
+              </td>
+
+              <td class="wideField" colspan="2">
+                <label for="type">State</label>
+                <br>
+                <input class="field" id="administrative_area_level_1" disabled="true"></input>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="wideField" colspan="2">
+                <label for="type">Zip Code</label>
+                <br>
+                <input class="field" id="postal_code" disabled="true"></input>
+              </td>
+
+              <td class="wideField" colspan="2">
+                <label for="type">Country</label>
+                <br>
+                <input class="field" id="country" disabled="true"></input>
+              </td>
+            </tr>
+          </table>
+
+          <label for="type">Activity Type</label>
+          <select class="custom-select custom-select-lg mb-3" id="type">
+            <option value="">Select</option>
+            <option value="Food & Drink">Food & Drink</option>
+            <option value="Nightlife">Nightlife</option>
+            <option value="Sights & Landmarks">Sights & Landmarks</option>
+            <option value="Tours">Tours</option>
+            <option value="Outdoor Activities">Outdoor Activities</option>
+            <option value="Indoor Activities">Indoor Activities</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="type">Activity Duration</label>
+          <select class="custom-select custom-select-lg mb-3" id="duration">
+            <option value="">Select</option>
+            <option value="0-1 Hours">0 - 1 hours</option>
+            <option value="1-2 Hours">1 - 2 hours</option>
+            <option value="2-3 Hours">2 - 3 hours</option>
+            <option value="3-4 Hours">3 - 4 hours</option>
+            <option value="4+ Hours">4+ hours</option>
+          </select>
+
+          <label for="type">Best Time of Day</label>
+          <select class="custom-select custom-select-lg mb-3" id="timeOfDay">
+            <option value="">Select</option>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+            <option value="Late Night">Late Night</option>
+          </select>
+
+          <label for="type">Price Point</label>
+          <select class="custom-select custom-select-lg mb-3" id="price">
+            <option value="">Select</option>
+            <option value="< $20">Less than $20</option>
+            <option value="$20-$50">$20 - $50</option>
+            <option value="$50-$100">$50 - $100</option>
+            <option value="$100-$150">$100 - $150</option>
+            <option value="$150-$200">$150 - $200</option>
+            <option value="$200+">$200+</option>
+          </select>
+
+          <div class="form-group">
+            <label for="Description">Description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+            <span class="error"></span>
+          </div>
+
+          <button class="btn btn-dark" id="add-activity" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
