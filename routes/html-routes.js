@@ -25,8 +25,8 @@ module.exports = function(app) {
     });
 
     // authors route loads author-manager.html
-    app.get("/signup", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/assets/signup.html"));
+    app.get("/registration", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/assets/registration.html"));
     });
 
     app.get("/login", function(req, res) {
