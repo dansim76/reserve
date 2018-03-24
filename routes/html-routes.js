@@ -1,3 +1,6 @@
+//if we want to use sequelize and handlebars, the then routes should be controllers
+//merge this file into controllers folder controller files
+
 var path = require("path");
 
 // Routes
