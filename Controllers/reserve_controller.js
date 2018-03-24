@@ -1,61 +1,32 @@
-var express = require("express");
+//this file offers a set of routes for displaying and saving data to db
+var db = require("../models");
 
-var router = express.Router();
 
-// Import the model (cat.js) to use its database functions.
-var user = require("../models/user.js");
+module.exports = function(app){
 
-// Create all our routes and set up logic within those routes where required.
-router.get("/", function(req, res) {
-  user.all(function(data) {
-    var hbsObject = {
-      stores: data
-    };
-    console.log(hbsObject);
-    res.render("login", hbsObject);
+
+  //front page reserve.html doesn't need anything
+
+  //creating new row in sql for new registration
+  app.post("/api/registration", function(req,res){
+    //if grocery then grocery table else store table
+    //register.html
+    if (req.body.type === 'foodbank'){ //need to add type into sql
+      db.foodbank.create(req.body).then(function(db) {
+        res.json(db);
+      });
+    }
+
   });
-});
 
-// router.post("/api/users", function(req, res) {
-//   user.create([
-//     "name", "sleepy"
-//   ], [
-//     req.body.name, req.body.sleepy
-//   ], function(result) {
-//     // Send back the ID of the new quote
-//     res.json({ id: result.insertId });
-//   });
-// });
 
-// router.put("/api/users/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
+  //verifying login information against sql
+  app.get("/api/login", function(req,res){
+    //if grocery then grocery table else store table
+    //using login information from tables 
+    //login.html
+  });
 
-//   console.log("condition", condition);
 
-//   user.update({
-//     sleepy: req.body.sleepy
-//   }, condition, function(result) {
-//     if (result.changedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
 
-// router.delete("/api/users/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   user.delete(condition, function(result) {
-//     if (result.affectedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
-
-// Export routes for server.js to use.
-module.exports = router;
+}
