@@ -1,3 +1,12 @@
+//in sequelize, the class activity exercises used "routes"
+//so reference week15 exercises' routes folder for what to input here
+//also know that handlebars will be referencing this file
+//refer to week 14 to see how that's done
+
+var db = require("../models");
+
+
+/*
 var express = require("express");
 
 var router = express.Router();
@@ -14,7 +23,7 @@ router.get("/", function(req, res) {
     console.log(hbsObject);
     res.render("login", hbsObject);
   });
-});
+});*/
 
 // router.post("/api/users", function(req, res) {
 //   user.create([
@@ -58,4 +67,4 @@ router.get("/", function(req, res) {
 // });
 
 // Export routes for server.js to use.
-module.exports = router;
+//module.exports = router;
