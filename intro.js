@@ -1,6 +1,6 @@
 
 new TypeIt('#example2', {
-    strings: ["preServe", "reServe!"],
+    strings: ["preserve!", "reServe"],
     speed: 150,
     breakLines: false,
     autoStart: false,
