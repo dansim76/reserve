@@ -4,7 +4,7 @@ var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
 
-//database wide options
+//database wide options// not working
 var opts = {
     define: {
         //prevent sequelize from pluralizing table names

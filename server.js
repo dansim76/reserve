@@ -13,11 +13,8 @@ app.use(bodyParser.json());
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-// Set Handlebars.
-var exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "login" }));
-app.set("view engine", "handlebars");
 
+require("./routes/html-routes.js")(app);
 
 // Import routes and give the server access to them.
 require("./Controllers/reserve_controller.js")(app);

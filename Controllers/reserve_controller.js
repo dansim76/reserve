@@ -7,8 +7,19 @@
 //this file offers a set of routes for displaying and saving data to db
 var db = require("../models");
 
+
 module.exports = function(app){
-  app.post("/api/foodbanks", function(req,res){
-    
+
+  app.get("/api/login", function(req,res){
+    //if grocery then grocery table else store table
+    //using login information from tables 
+    //login.html
+  })
+
+  app.post("/api/register", function(req,res){
+    //if grocery then grocery table else store table
+    //using login information from tables 
+    //register.html
   })
 }
+
