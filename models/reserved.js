@@ -16,12 +16,12 @@ module.exports = function(sequelize, DataTypes) {
 
     expiration: {
       type: DataTypes.DATE,
-      defaultValue: Sequelize.NOW
+      defaultValue: DataTypes.NOW
     }
 
   });
 
-  Post.associate = function (models){ //this will create a foreign key
+  reserved.associate = function (models){ //this will create a foreign key
     models.reserved.belongsTo(models.foodbanks,{
       onDelete: "CASCADE", //deletes everything that depends on this foreign key
       foreignKey: {
