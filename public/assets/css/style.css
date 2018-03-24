@@ -4,25 +4,3 @@
     filter: alpha(opacity=50);
 
 }
-#intro {
-   
-    background-image: url(../images/retail1.jpg); 
-    text-align: center;
-    background-size: cover;
-    color: white;
-    padding-top: 2em;
-    height: 700px;
-    width:100%;
-    text-decoration: none; 
-    text-shadow: 10px 10px  #ff884d;
-    font-size: 120px;
-    position: absolute;
-    z-index:5;
-    top:0;
-  }
-  
-body{
-  background-image: url(../images/retail.jpg);
-  background-size: cover;
-
-}
