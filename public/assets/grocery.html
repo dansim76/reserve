@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="UTF-8">
-  <title>Create Activity</title>
+  <title>Donate</title>
 
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Script -->
-  <script src="./js/grocery.js"></script>
+  <script src="./js/registration.js"></script>
 
   <!-- Bootstrap CDN-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,119 +37,165 @@
 
       <div class="panel panel- createActivityBox">
         <div class="panel-heading">
-          <h3 class="panel-title">Create Activity</h3>
+          <h3 class="panel-title">Enter Your Donation</h3>
         </div>
 
         <div class="panel-body">
 
-        <form>
-          <div class="form-group">
-            <label for="name">Activity Name</label>
-            <input class="form-control" id="name" type="text">
-            <span class="error"></span>
+          <div class="row">
+            <div class="col-lg-6">
+              <label for="type">Canned Goods</label>
+                <br>
+            <div>Canned Tuna, Chicken, Salmon, or Other</div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label for="name">Quantity</label>
+                <input class="form-control" id="cannedchicken" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label for="name">Item Expiration</label>
+                <input class="form-control" id="cannedchickenexp" type="text">
+              </div>
+            </div>
           </div>
 
-          <div id="locationField">
-            <label for="type">Search address or location: </label><br>
-            <input class="form-control" id="autocomplete" placeholder="Search Here"
-                   onFocus="geolocate()" type="text" style="width: 100%"></input>
-          </div>
-          <br>
+          <div class="row">
+            <div class="col-lg-6">
+              <div>Canned Vegetables</div>
+            </div>
 
-          <table class="table" id="address">
-            <tr>
-              <td class="slimField">
-                <label for="type">Address Number</label>
-                <br>
-                <input class="field" id="street_number" disabled="true"></input>
-              </td>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cannedveg" type="text">
+              </div>
+            </div>
 
-              <td class="wideField" colspan="2">
-                <label for="type">Street Name</label>
-                <br>
-                <input class="field" id="route" disabled="true"></input>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="wideField" colspan="2">
-                <label for="type">City</label>
-                <br>
-                <input class="field" id="locality" disabled="true"></input>
-              </td>
-
-              <td class="wideField" colspan="2">
-                <label for="type">State</label>
-                <br>
-                <input class="field" id="administrative_area_level_1" disabled="true"></input>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="wideField" colspan="2">
-                <label for="type">Zip Code</label>
-                <br>
-                <input class="field" id="postal_code" disabled="true"></input>
-              </td>
-
-              <td class="wideField" colspan="2">
-                <label for="type">Country</label>
-                <br>
-                <input class="field" id="country" disabled="true"></input>
-              </td>
-            </tr>
-          </table>
-
-          <label for="type">Activity Type</label>
-          <select class="custom-select custom-select-lg mb-3" id="type">
-            <option value="">Select</option>
-            <option value="Food & Drink">Food & Drink</option>
-            <option value="Nightlife">Nightlife</option>
-            <option value="Sights & Landmarks">Sights & Landmarks</option>
-            <option value="Tours">Tours</option>
-            <option value="Outdoor Activities">Outdoor Activities</option>
-            <option value="Indoor Activities">Indoor Activities</option>
-            <option value="Other">Other</option>
-          </select>
-
-          <label for="type">Activity Duration</label>
-          <select class="custom-select custom-select-lg mb-3" id="duration">
-            <option value="">Select</option>
-            <option value="0-1 Hours">0 - 1 hours</option>
-            <option value="1-2 Hours">1 - 2 hours</option>
-            <option value="2-3 Hours">2 - 3 hours</option>
-            <option value="3-4 Hours">3 - 4 hours</option>
-            <option value="4+ Hours">4+ hours</option>
-          </select>
-
-          <label for="type">Best Time of Day</label>
-          <select class="custom-select custom-select-lg mb-3" id="timeOfDay">
-            <option value="">Select</option>
-            <option value="Morning">Morning</option>
-            <option value="Afternoon">Afternoon</option>
-            <option value="Evening">Evening</option>
-            <option value="Late Night">Late Night</option>
-          </select>
-
-          <label for="type">Price Point</label>
-          <select class="custom-select custom-select-lg mb-3" id="price">
-            <option value="">Select</option>
-            <option value="< $20">Less than $20</option>
-            <option value="$20-$50">$20 - $50</option>
-            <option value="$50-$100">$50 - $100</option>
-            <option value="$100-$150">$100 - $150</option>
-            <option value="$150-$200">$150 - $200</option>
-            <option value="$200+">$200+</option>
-          </select>
-
-          <div class="form-group">
-            <label for="Description">Description</label>
-            <textarea class="form-control" id="description" rows="3"></textarea>
-            <span class="error"></span>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cannedvegexp" type="text">
+              </div>
+            </div>
           </div>
 
-          <button class="btn btn-dark" id="add-activity" type="submit">Submit</button>
-        </form>
+          <div class="row">
+            <div class="col-lg-6">
+              <div>Canned Fruit</div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cannedfruit" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cannedfruitexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div>Canned Tomatoes/Pasta Sauce (No glass jars, please)</div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cannedfruit" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cannedfruitexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div>Canned Soup</div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cannedsoup" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cannedsoupexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-lg-6">
+              <label for="type">Fresh Foods</label>
+                <br>
+            <div>Fresh Meat</div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="freshmeat" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="freshmeatexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div>Fresh Vegetables</div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="freshveg" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="freshvegexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div>Fresh Fruit</div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="freshfruit" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="freshfruitexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-dark" id="submit" type="submit">Submit</button>
+
+
       </div>
     </div>
   </div>
