@@ -13,7 +13,10 @@ app.use(bodyParser.json());
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-
+//we won't be using handlebars for now but will change to it in the futre
+//the views folder is currently not being used
+//the controller folder will hold the api routes (reserve_controllers)
+//in the future when we change to handlebars, controllers will monitor the handlebars, and we would not need routes folder anymore
 require("./routes/html-routes.js")(app);
 
 // Import routes and give the server access to them.

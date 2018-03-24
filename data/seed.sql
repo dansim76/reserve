@@ -43,7 +43,7 @@ lines terminated by '\n';
 --IGNORE 1 LINES
 
 
-CREATE TABLE inventory (
+CREATE TABLE inventories (
   id INT NOT NULL AUTO_INCREMENT,
   item VARCHAR(50) NOT NULL,
   quantity INT NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE inventory (
 );
 
 
-CREATE TABLE reserved (
+CREATE TABLE reserveds (
   id INT NOT NULL AUTO_INCREMENT,
   item VARCHAR(50) NOT NULL,
   quantity INT NOT NULL,
