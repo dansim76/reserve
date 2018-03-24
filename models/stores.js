@@ -48,7 +48,7 @@ module.exports = function(sequelize, DataTypes) {
  
   });
 
-  Store.associate = function(models) {
+  stores.associate = function(models) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
     stores.hasMany(models.inventory, {

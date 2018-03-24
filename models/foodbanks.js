@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
  
   });
 
-  Foodbank.associate = function(models) {
+  foodbanks.associate = function(models) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
     foodbanks.hasMany(models.reserved, {

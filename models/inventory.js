@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-  var inventory = sequelize.define("invetory", {
+  var inventory = sequelize.define("inventory", {
     item: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -16,12 +16,11 @@ module.exports = function(sequelize, DataTypes) {
 
     expiration: {
       type: DataTypes.DATE,
-      defaultValue: Sequelize.NOW
+      defaultValue: DataTypes.NOW
     }
-
   });
 
-  Post.associate = function (models){ //this will create a foreign key
+  inventory.associate = function (models){ //this will create a foreign key
     models.inventory.belongsTo(models.stores,{
       onDelete: "CASCADE", //deletes everything that depends on this foreign key
       foreignKey: {
@@ -32,5 +31,5 @@ module.exports = function(sequelize, DataTypes) {
 
   // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
   //http://docs.sequelizejs.com/manual/tutorial/associations.html
-  return invetory;
+  return inventory;
 };
