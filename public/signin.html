@@ -7,10 +7,11 @@
             <title>Reserve</title>
 
             <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
-            <link rel="stylesheet" href="css/style.css" media="screen" title="no title">
+
             <script src="https://code.jquery.com/jquery.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             <link href="https://fonts.googleapis.com/css?family=Monoton|Montserrat" rel="stylesheet">
+            <link rel="stylesheet" href="css/style.css" media="screen" title="no title">
         </head>
         <body id="first-page" style ="background-image: url(images/wallpaper.jpg)">   
             <nav class="navbar navbar-default">
@@ -44,13 +45,17 @@
                     <div class="col-md-12 blog-container">
                         <div class= "jumbotron">
                             <h1>Login!</h1>
-                            <form action="/login" method="POST">
+                            <form id="signin" name="signin" action="signin" method="POST">
                             
-                                <input type="radio" name="grocery" value="Grocery" checked> Grocery<br>
-                                <input type="radio" name="foodpantry" value="Food Pantry">Food Pantry<br>
-                                <input type="text" name="username" placeholder="username">
-                                <input type="password" name="password" placeholder="password">
-                                <input type="submit" value="login!">
+                                <label for="usertype">Are you grocery or pantry?</label>
+                                <select name="usertype">
+                                    <option value="grocery">Grocery</option>
+                                    <option value="pantry">Pantry</option>
+                                </select>
+                                <br>
+                                <input name="username" type="text" placeholder="username"/>
+                                <input type="password" name="password" placeholder="password"/>
+                                <input class="btn" type="submit" value="Sign In" />
                             
                             </form>    
                         </div>
