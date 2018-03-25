@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
+//app.use(express.static(__dirname + '/public'));
 
 //we won't be using handlebars for now but will change to it in the futre
 //the views folder is currently not being used
@@ -21,8 +22,10 @@ app.use(express.static("public"));
 //in the future when we change to handlebars, controllers will monitor the handlebars, and we would not need routes folder anymore
 require("./routes/html-routes.js")(app);
 
+
+
 // Import routes and give the server access to them.
-require("./Controllers/reserve_controller.js")(app);
+require("./controllers/reserve_controller.js")(app);
 
 
 // Start our server so that it can begin listening to client requests.
