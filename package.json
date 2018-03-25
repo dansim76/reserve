@@ -25,6 +25,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "install": "^0.11.0",
+    "js-datepicker": "^2.3.0",
     "mongoose": "^5.0.11",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
@@ -32,6 +33,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.0",
+    "rc-calendar": "^9.6.0",
     "sequelize": "^4.37.4"
   }
 }

@@ -16,16 +16,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/datepicker.css">
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvlvuBqoM_v-3KtJRu2REtvHxxU2995So&libraries=places&callback=initAutocomplete" async defer></script>
-
-   <!-- Script needs to be updated for grocery.html-->
-  <!-- <script src="js/grocery.js" type="text/javascript"></script> -->
+  <script src="./js/grocery.js"></script>
 
 </head>
 
 <body>
-
+  <script src="../node_modules/js-datepicker/datepicker.min.js"></script>
 
   <div class="container">
 
@@ -51,29 +49,35 @@
           <div class="row">
             <div class="col-lg-6">
               <label for="type">Canned Goods</label>
-                <br>
-            <div>Canned Tuna, Chicken, Salmon, or Other</div>
             </div>
 
             <div class="col-lg-3">
+              <label for="type">Quantity (Cans)</label>
+            </div>
+
+            <div class="col-lg-3">
+              <label for="type">Item Expiration</label>
+            </div>
+          </div>
+
+        <div class ="row">
+            <div class="col-lg-6">Canned Tuna, Chicken, Salmon, or Other</div>
+
+            <div class="col-lg-3">
               <div class="form-group">
-                <label for="name">Quantity</label>
                 <input class="form-control" id="cannedchicken" type="text">
               </div>
             </div>
 
             <div class="col-lg-3">
               <div class="form-group">
-                <label for="name">Item Expiration</label>
-                <input class="form-control" id="cannedchickenexp" type="text">
+                  <input class="form-control date" id="cannedchickenexp" type="text">
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-lg-6">
-              <div>Canned Vegetables</div>
-            </div>
+            <div class="col-lg-6">Canned Vegetables</div>
 
             <div class="col-lg-3">
               <div class="form-group">
@@ -83,15 +87,13 @@
 
             <div class="col-lg-3">
               <div class="form-group">
-                <input class="form-control" id="cannedvegexp" type="text">
+                <input class="form-control date" id="cannedvegexp" type="text">
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-lg-6">
-              <div>Canned Fruit</div>
-            </div>
+            <div class="col-lg-6">Canned Fruit</div>
 
             <div class="col-lg-3">
               <div class="form-group">
@@ -107,27 +109,23 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-6">
-              <div>Canned Tomatoes/Pasta Sauce (No glass jars, please)</div>
-            </div>
+            <div class="col-lg-6">Canned Tomatoes/Pasta Sauce (No glass jars, please)</div>
 
             <div class="col-lg-3">
               <div class="form-group">
-                <input class="form-control" id="cannedfruit" type="text">
+                <input class="form-control" id="cannedsauce" type="text">
               </div>
             </div>
 
             <div class="col-lg-3">
               <div class="form-group">
-                <input class="form-control" id="cannedfruitexp" type="text">
+                <input class="form-control" id="cannedsauceexp" type="text">
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-lg-6">
-              <div>Canned Soup</div>
-            </div>
+            <div class="col-lg-6">Canned Soup</div>
 
             <div class="col-lg-3">
               <div class="form-group">
@@ -142,13 +140,24 @@
             </div>
           </div>
 
-          <div class="row">
 
+        <!-- start of fresh foods -->
+          <div class="row">
             <div class="col-lg-6">
               <label for="type">Fresh Foods</label>
-                <br>
-            <div>Fresh Meat</div>
             </div>
+
+            <div class="col-lg-3">
+              <label for="type">Quantity (Lbs)</label>
+            </div>
+
+            <div class="col-lg-3">
+              <label for="type">Item Expiration</label>
+            </div>
+          </div>
+
+        <div class ="row">
+            <div class="col-lg-6">Fresh Meat</div>
 
             <div class="col-lg-3">
               <div class="form-group">
@@ -164,9 +173,7 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-6">
-              <div>Fresh Vegetables</div>
-            </div>
+            <div class="col-lg-6">Fresh Vegetables</div>
 
             <div class="col-lg-3">
               <div class="form-group">
@@ -182,9 +189,7 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-6">
-              <div>Fresh Fruit</div>
-            </div>
+            <div class="col-lg-6">Fresh Fruit</div>
 
             <div class="col-lg-3">
               <div class="form-group">
@@ -199,8 +204,134 @@
             </div>
           </div>
 
-          <button class="btn btn-dark" id="submit" type="submit">Submit</button>
 
+        <!-- start of beverages -->
+          <div class="row">
+            <div class="col-lg-6">
+              <label for="type">Bottles</label>
+            </div>
+
+            <div class="col-lg-3">
+              <label for="type">Quantity (Packs)</label>
+            </div>
+
+            <div class="col-lg-3">
+              <label for="type">Item Expiration</label>
+            </div>
+          </div>
+
+        <div class ="row">
+            <div class="col-lg-6">Water</div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="water" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="waterexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">Juice</div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="juice" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="juiceexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">Soda</div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="soda" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="sodaexp" type="text">
+              </div>
+            </div>
+          </div>
+
+        <!-- start of pantry items -->
+          <div class="row">
+            <div class="col-lg-6">
+              <label for="type">Dry Goods</label>
+            </div>
+
+            <div class="col-lg-3">
+              <label for="type">Quantity (Individual Units)</label>
+            </div>
+
+            <div class="col-lg-3">
+              <label for="type">Item Expiration</label>
+            </div>
+          </div>
+
+        <div class ="row">
+            <div class="col-lg-6">Pasta</div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="pasta" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="pastaexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">Whole Grains (Rice, Quinoa, etc)</div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="wholegrain" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="wholegrainexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">Cereal</div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cereal" type="text">
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <input class="form-control" id="cerealexp" type="text">
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-dark" id="submit" type="submit">Submit</button>
 
       </div>
     </div>
