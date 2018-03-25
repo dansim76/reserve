@@ -1,4 +1,0 @@
-1,Mariano's,2021,West Chicago Avenue,Chicago,IL,60622,test1,test1
-2,Jewel-Osco,3531,North Broadway Street,Chicago,IL,60657,test2,test2
-3,Trader Joe's,667,West Diversey Parkway,Chicago,IL,60614,test3,test3
-4,Eataly,43,East Ohio Stree,Chicago,IL,60611,test4,test4
