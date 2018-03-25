@@ -12,9 +12,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Monoton|Montserrat" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvlvuBqoM_v-3KtJRu2REtvHxxU2995So&libraries=places&callback=initAutocomplete" async defer></script>
-    
+
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <!-- <script src="js/registration.js"></script> -->
+    <script src="./js/signup.js"></script>
 
 </head>
 
@@ -31,7 +31,7 @@
                 <a class="navbar-brand" href="https://github.com/dansim76/reserve">reServe</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">   
+                <ul class="nav navbar-nav">
                         <li><a href="#">why reServe?</a></li> <!-- need to fill this in and map to an html -->
                         <li><a href="#">about us</a></li> <!-- need to fill this in and map to an html -->
                 </ul>
@@ -66,11 +66,11 @@
                         <br>
                         <label for="name">Name: </label>
                         <input name="name" type="text" placeholder="Enter store name here"/>
-                        
+
                         <br>
                         <label for="username">Username: </label>
                         <input type="text" name="username" placeholder="Create username here"/>
-                        
+
                         <br>
                         <label for="password">Password: </label>
                         <input type="password" name="password" placeholder="Enter password here"/>
@@ -80,7 +80,7 @@
                             <input class="form-control" id="autocomplete" placeholder="Search Here"
                             onFocus="geolocate()" type="text" style="width: 100%"></input>
                         </div>
-                        
+
                         <br>
                         <table class="table" id="address">
                             <tr>
