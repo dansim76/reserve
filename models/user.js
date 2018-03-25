@@ -9,12 +9,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER
         },
 
-/*    usertype: {
-        type: DataTypes.ENUM('grocery', 'pantry'),
-        defaultValue: 'Grocery'
-    },*/
+        usertype: {
+            type: DataTypes.ENUM('grocery', 'pantry'),
+            defaultValue: 'Grocery'
+        },
  
-/*        name: {
+        name: {
             type: DataTypes.STRING,
             notEmpty: true
         },
@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
         zip: {
             type: DataTypes.STRING,
             notEmpty: true
-        },*/
+        },
  
         username: {
             type: DataTypes.TEXT
