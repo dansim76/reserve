@@ -9,26 +9,27 @@ module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads view.html
+  // reserve route loads reserve.html
     app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/reserve.html"));
     });
 
-    // cms route loads cms.html
+    // grocery route loads grocery.html
     app.get("/grocery", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/grocery.html"));
     });
 
-    // blog route loads blog.html
+    // pantry route loads pantry.html
     app.get("/pantry", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/pantry.html"));
     });
 
-    // authors route loads author-manager.html
+    // registration route loads registration.html
     app.get("/registration", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/registration.html"));
     });
 
+    // login loads login.html
     app.get("/login", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/login.html"));
     });
