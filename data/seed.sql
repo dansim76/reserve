@@ -1,4 +1,7 @@
-CREATE TABLE stores (
+--- this is old and we don't need this anymore
+
+
+/*CREATE TABLE stores (
   id INT NOT NULL AUTO_INCREMENT,
   storeName VARCHAR(100) NOT NULL,
   addressNumber VARCHAR (25) NULL,
@@ -59,3 +62,4 @@ CREATE TABLE reserveds (
   expiration DATE NOT NULL,
   PRIMARY KEY (id)
 );
+*/
