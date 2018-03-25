@@ -1,6 +1,6 @@
 var path = require("path");
 var exports = module.exports = {};
-
+//sim is cool
 
 exports.signup = function(req,res){
 	//res.render('signup'); 
