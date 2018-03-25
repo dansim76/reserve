@@ -11,26 +11,26 @@ module.exports = function(app) {
 
   // index route loads view.html
     app.get("/", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/assets/reserve.html"));
+        res.sendFile(path.join(__dirname, "../public/reserve.html"));
     });
 
     // cms route loads cms.html
     app.get("/grocery", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/assets/grocery.html"));
+        res.sendFile(path.join(__dirname, "../public/grocery.html"));
     });
 
     // blog route loads blog.html
     app.get("/pantry", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/assets/pantry.html"));
+        res.sendFile(path.join(__dirname, "../public/pantry.html"));
     });
 
     // authors route loads author-manager.html
     app.get("/registration", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/assets/registration.html"));
+        res.sendFile(path.join(__dirname, "../public/registration.html"));
     });
 
     app.get("/login", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/assets/login.html"));
+        res.sendFile(path.join(__dirname, "../public/login.html"));
     });
 
 };
