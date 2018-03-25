@@ -36,8 +36,8 @@ require('./config/passport/passport.js')(passport, models.user);
 //in the future when we change to handlebars, controllers will monitor the handlebars, and we would not need routes folder anymore
 require("./routes/html-routes.js")(app,passport);
 
-// Import routes and give the server access to them.
-require("./controllers/reserve_controller.js")(app);
+// Import api routes and give the server access to them.
+//require("./routes/api-routes.js")(app);
 
 ////////////////////////////////////////
 // Synch database and

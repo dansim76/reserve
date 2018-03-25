@@ -52,14 +52,14 @@ module.exports = function(passport, user) {
          var userPassword = generateHash(password);
          var data = {
             username: username,
-   					password: userPassword/*,
-					name: req.body.name,
-					usertype: req.body.usertype,
-					addressNumber: req.body.addressNumber,
-					addressStreet: req.body.addressStreet,
-					city: req.body.city,
-					state: req.body.state,
-					zip: req.body.zip*/
+   					password: userPassword,
+  					name: req.body.name,
+  					usertype: req.body.usertype,
+  					addressNumber: req.body.addressNumber,
+  					addressStreet: req.body.addressStreet,
+  					city: req.body.city,
+  					state: req.body.state,
+  					zip: req.body.zip
                 };
                 User.create(data).then(function(newUser, created) {
                     if (!newUser) {
