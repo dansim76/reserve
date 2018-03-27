@@ -47,3 +47,8 @@ label {
     opacity: 0.9;
     filter: alpha(opacity=50);
   }
+  
+  .btn {
+    color: white;
+    background-color: #2c3e50;
+  }
