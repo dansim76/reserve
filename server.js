@@ -35,6 +35,8 @@ require('./config/passport/passport.js')(passport, models.user);
 //the controller folder will hold the api routes (reserve_controllers)
 //in the future when we change to handlebars, controllers will monitor the handlebars, and we would not need routes folder anymore
 require("./routes/html-routes.js")(app,passport);
+require("./routes/api-routes.js")(app,passport);
+
 
 // Import api routes and give the server access to them.
 //require("./routes/api-routes.js")(app);
