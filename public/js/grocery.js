@@ -85,16 +85,6 @@ $(document).ready(function(){
 
     var pushInventory = [];
 
-    // function pushArray() {
-    //   for (var i = 0; i < allInventory.length; i++) {
-    //       if ((allInventory[i].quantity !== "") && (allInventory[i].expiration !== "")) {
-    //           pushInventory.push(allInventory[i]);
-    //       };
-    //   };
-    // };
-    // pushArray ();
-
-    // console.log(pushInventory);
     function pushArray() {
       for (var i = 0; i < allInventory.length; i++) {
           if ((allInventory[i].quantity !== "") && (allInventory[i].expiration !== "")) {
@@ -102,8 +92,6 @@ $(document).ready(function(){
           };
       };
     };
-  
-    // $.post("/api/inventories", pushInventory);
         
   pushArray();
 
@@ -117,6 +105,3 @@ $(document).ready(function(){
   })
 
 });
-
-
-
