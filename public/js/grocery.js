@@ -106,7 +106,14 @@ $(document).ready(function(){
     // $.post("/api/inventories", pushInventory);
         
   pushArray();
-  
+
+    function clear() {
+      $(".createActivityBox").empty();
+      $(".createActivityBox").text("Thank you for donating!");
+    }
+
+    clear();
+
   })
 
 });
