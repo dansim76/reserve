@@ -11,15 +11,15 @@ module.exports = function(app, passport) {
     // Each of the below routes just handles the HTML page that the user gets sent to.
 
     // reserve route loads reserve.html
-    app.get("/", function(req, res) {
-        //res.send('Welcome to Passport with Sequelize');
-        res.sendFile(path.join(__dirname, "../public/reserve.html"));
-    });
+    app.get("/", authController.reserve);
 
-    // registration route loads registration.html
+    // home route loads home.html (without all that flashy stuff)
+    app.get("/home", authController.home);
+
+    // registration route loads signup.html
     app.get("/signup", authController.signup);
 
-    // login loads login.html
+    // login loads signin.html
     app.get("/signin", authController.signin);
 
 
@@ -28,14 +28,14 @@ module.exports = function(app, passport) {
         failureRedirect: '/signup'
     }));*/
 
+    //check login against database to re-route
     app.post("/signup", passport.authenticate('local-signup',{failureRedirect: '/signup'}) ,function(req, res){
 
-        //console.log(req.user.usertype);
         if(req.user.usertype === 'grocery'){
-            res.redirect('/grocery')
+            res.redirect('/grocery/' + req.user.username);
         }
         else{
-            res.redirect('/')
+            res.redirect('/pantry/' + req.user.username);
         }
 
     })
@@ -45,14 +45,16 @@ module.exports = function(app, passport) {
         failureRedirect: '/signin'
     }));*/
 
+    //check login against database to reroute
     app.post("/signin", passport.authenticate('local-signin',{failureRedirect: '/signin'}) ,function(req, res){
 
-        //console.log(req.user.usertype);
+        console.log(req.user.usertype);
         if(req.user.usertype === 'grocery'){
-            res.redirect('/grocery')
+            //res.redirect('/grocery/' + req.user.username);
+            res.redirect('/grocery/' + req.user.username);
         }
         else{
-            res.redirect('/')
+            res.redirect('/pantry/' + req.user.username);
         }
 
     })
@@ -67,13 +69,11 @@ module.exports = function(app, passport) {
     }
 
     // grocery route loads grocery.html
-    app.get("/grocery", isLoggedIn, authController.grocery);
+    app.get("/grocery/:username?", isLoggedIn, authController.grocery);
 
 
     // pantry route loads pantry.html
-    app.get("/pantry", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/pantry.html"));
-    });
+    app.get("/pantry/:username?", isLoggedIn, authController.pantry);
 
 
 };

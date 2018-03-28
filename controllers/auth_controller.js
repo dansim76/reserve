@@ -2,6 +2,13 @@ var path = require("path");
 var exports = module.exports = {};
 //sim is cool
 
+exports.home = function(req,res){
+	res.sendFile(path.join(__dirname, "../public/home.html"));
+}
+exports.reserve = function(req,res){
+	res.sendFile(path.join(__dirname, "../public/reserve.html"));
+}
+
 exports.signup = function(req,res){
 	//res.render('signup'); 
 	res.sendFile(path.join(__dirname, "../public/signup.html"));
@@ -13,7 +20,6 @@ exports.signin = function(req,res){
 }
 
 exports.grocery = function(req,res){
-	//need to render based on whether it is grocery or bank 
 	res.sendFile(path.join(__dirname, "../public/grocery.html"));
 }
 
