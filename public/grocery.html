@@ -21,15 +21,20 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- should be using handlebars....we have "../css/style.css" rather than "css/style.css" because of the dynamic route we create for grocery....if we use handle bars this problem would not exist-->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"/>
-    <script src="./js/grocery.js"></script>
+    
+    <!-- should be using handlebars....we have "../css/style.css" rather than "css/style.css" because of the dynamic route we create for grocery....if we use handle bars this problem would not exist-->
+    <script src="../js/grocery.js"></script>
     
   </head>
   
   <body>
-    <body style ="background-image: url(./images/retail.jpg);background-size: cover">
+    <!-- should be using handlebars....we have "../css/style.css" rather than "css/style.css" because of the dynamic route we create for grocery....if we use handle bars this problem would not exist-->
+    <body style ="background-image: url(../images/retail.jpg);background-size: cover">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -39,7 +44,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://ibb.co/hH4skx">reServe</a>
+            <a class="navbar-brand" href="/home">reServe</a>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">   
@@ -47,10 +52,15 @@
               <li><a href="#">about us</a></li> 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/signup">Sign-Up</a></li>
-              <li><a href="/register">Give</a></li>
-              <li><a href="/survey">Receive</a></li>
+              <li><a id="demo"></a></li>
+                <script type = "text/javascript">
+                  //this script gets the username from URL
+                  //if need m ore info on user, do an ajax call with where statement matching user and usertype
+                var patharr =  window.location.pathname.split('/');
+                document.getElementById("demo").innerHTML =patharr[patharr.length-1];
+                </script>      
               <li><a href="/logout">Log out</a></li>
+
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -62,10 +72,12 @@
         
         <!-- connections to reserve.html (home page) -->
         <div class="row">
-          <div id="homeIcon"><a href="/"><img src="./images/home.png" style= "width: 40px;"></a>
+          <!-- should be using handlebars....we have "../css/style.css" rather than "css/style.css" because of the dynamic route we create for grocery....if we use handle bars this problem would not exist-->
+          <div id="homeIcon"><a href="/home"><img src="../images/home.png" style= "width: 40px;"></a>
             
             <!-- logout works only with hosted session on servers -->
-            <a href="/logout"><img src="./images/Logout-512.png" style= "width: 40px;"></a>
+            <!-- should be using handlebars....we have "../css/style.css" rather than "css/style.css" because of the dynamic route we create for grocery....if we use handle bars this problem would not exist-->
+            <a href="/logout"><img src="../images/Logout-512.png" style= "width: 40px;"></a>
           </div>
           
           <div class="col-lg-12" id="body">
