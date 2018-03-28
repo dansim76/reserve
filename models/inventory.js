@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-  var inventory = sequelize.define("inventory", {
+  var Inventory = sequelize.define("Inventory", {
     item: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,5 +31,5 @@ module.exports = function(sequelize, DataTypes) {
 
   // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
   //http://docs.sequelizejs.com/manual/tutorial/associations.html
-  return inventory;
+  return Inventory;
 };

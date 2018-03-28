@@ -4,7 +4,7 @@
 
 // Dependencies
 // =============================================================
-var Inventory = require("../models/inventory.js");
+var db = require("../models");
 
 
 // Routes
@@ -18,28 +18,19 @@ module.exports = function(app) {
     // Sequelize queries are asynchronous, which helps with perceived speed.
     // If we want something to be guaranteed to happen after the query, we'll use
     // the .then function
-    Inventory.findAll({}).then(function(results) {
+    db.Inventory.findAll({}).then(function(results) {
       // results are available to us inside the .then
       res.json(results);
     });
 
   });
 
-  // Add a chirp
   app.post("/api/inventories", function(req, res) {
-
-    console.log("Inventory Data:");
-    console.log(req.body);
-
-    Inventory.create({
-      item: req.body.item,
-      quantity: req.body.quantity,
-      expiration: req.body.expiration
-    }).then(function(results) {
-      // `results` here would be the newly created chirp
-      res.end();
+    db.Inventory.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
     });
-
   });
+
+
 
 };
