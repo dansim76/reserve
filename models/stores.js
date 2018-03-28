@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
   stores.associate = function(models) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
-    stores.hasMany(models.inventory, {
+    stores.hasMany(models.Inventory, {
       onDelete: "cascade"
     });
   };

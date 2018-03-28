@@ -23,15 +23,39 @@ module.exports = function(app, passport) {
     app.get("/signin", authController.signin);
 
 
-    app.post("/signup", passport.authenticate('local-signup',{
+/*    app.post("/signup", passport.authenticate('local-signup',{
         successRedirect: '/grocery',
         failureRedirect: '/signup'
-    }));
+    }));*/
 
-    app.post('/signin', passport.authenticate('local-signin', {
+    app.post("/signup", passport.authenticate('local-signup',{failureRedirect: '/signup'}) ,function(req, res){
+
+        //console.log(req.user.usertype);
+        if(req.user.usertype === 'grocery'){
+            res.redirect('/grocery')
+        }
+        else{
+            res.redirect('/')
+        }
+
+    })
+
+/*    app.post('/signin', passport.authenticate('local-signin', {
         successRedirect: '/grocery',
         failureRedirect: '/signin'
-    }));
+    }));*/
+
+    app.post("/signin", passport.authenticate('local-signin',{failureRedirect: '/signin'}) ,function(req, res){
+
+        //console.log(req.user.usertype);
+        if(req.user.usertype === 'grocery'){
+            res.redirect('/grocery')
+        }
+        else{
+            res.redirect('/')
+        }
+
+    })
 
     app.get("/logout", authController.logout);
 
