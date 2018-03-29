@@ -4,14 +4,14 @@ $(document).ready(function(){
         startDate: new Date(),
         autoclose: true,
     });
-    
+
     // function grabUser(req,res){
     //     console.log("this is user" +req.user.userName);
     // }
     var patharr =  window.location.pathname.split('/');
     var id =patharr[patharr.length-1];
     console.log(id)
-    
+
     $("#submit").on("click", function() {
         event.preventDefault();
         var allInventory = ([
@@ -21,9 +21,6 @@ $(document).ready(function(){
                 expiration: $("#cannedchickenexp").val().trim(),
                 usertype:"grocery",
                 username: id
-
-
-                
             },
             cannedveg = {
                 item: "Canned Vegetables",
@@ -118,11 +115,11 @@ $(document).ready(function(){
                 //storeid: $(this).storeid
             },
         ]);
-        
+
         console.log(allInventory);
-        
+
         var pushInventory = [];
-        
+
         function pushArray() {
             for (var i = 0; i < allInventory.length; i++) {
                 if ((allInventory[i].quantity !== "") && (allInventory[i].expiration !== "")) {
@@ -130,18 +127,16 @@ $(document).ready(function(){
                 };
             };
         };
-        
+
         pushArray();
-        
+
         function clear() {
             $(".createActivityBox").empty();
             $(".createActivityBox").text("Thank you for donating!");
         }
-        
+
         clear();
-        
+
     })
-    
-=======
 
 });

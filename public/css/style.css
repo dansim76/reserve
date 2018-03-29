@@ -1,5 +1,4 @@
-#intro
-{
+#intro {
     background-image: url(../images/retail1.jpg);
     text-align: center;
     background-size: cover;
@@ -15,14 +14,12 @@
     top:0;
 }
 
-body
-{
+body {
   background-image: url(../images/retail.jpg);
   background-size: cover;
 }
 
-.jumbotron
-{
+.jumbotron {
     width:800px;
     opacity: 0.9;
     filter: alpha(opacity=50);
@@ -33,22 +30,28 @@ label {
     font-size: 15px;
 }
 
-#registration_join{
+#registration_join {
     text-align: center;
   }
-  
-  #registration_signup{
+
+#registration_signup {
   font-size: 40px;
   text-align: center;
-  
-  }
-  #body{
-    width:800px;
-    opacity: 0.9;
-    filter: alpha(opacity=50);
   }
 
-  .btn {
-    color: white;
-    background-color: #2c3e50;
-  }
+#body {
+  width:800px;
+  opacity: 0.9;
+  filter: alpha(opacity=50);
+}
+
+.btn {
+  color: white;
+  background-color: #2c3e50;
+}
+
+.header {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
