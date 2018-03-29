@@ -1,76 +1,77 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Reserve</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>reServe - Select Groceries</title>
 
-            <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
-            <link rel="stylesheet" href="./css/style.css" media="screen" title="no title">
-            <script src="https://code.jquery.com/jquery.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-            <link href="https://fonts.googleapis.com/css?family=Monoton|Montserrat" rel="stylesheet">
-        </head>
-    <body>
-        <nav id="header" class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                  <button id="header-menubutton" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="navbar-collapse-1">
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="/"><span>Pantry</span></a>
-                </div>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css" media="screen" title="no title">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Montserrat" rel="stylesheet">
+    <script src="./js/pantry.js"></script>
+</head>
 
-                <div id="header-menu" class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                    <li><a href="#login">Sign-In</a></li>
-                  </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-<div class = "jumbotron"
-        class="container">
-<!--
-        </div> -->
+<body>
+    <nav id="header" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <button id="header-menubutton" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="navbar-collapse-1">
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><span>Pantry</span></a>
+            </div>
+
+            <div id="header-menu" class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="#login">Sign-In</a></li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-5">
+                <div class="row header">Choose Your Groceries</div>
                 <ul class="grocery-list">
                     <li class="donated-item">
-                        <form id="item-form">
-                        <input class="new-item" />
-                        </form>
+<!--                         <form id="item-form">
+                        <input class="new-item">
+                        </form> -->
+                        <span class="grocery-container">
                     </li>
-                    <span class="item-container">
-                    </span>
+                    <span class="grocery-container"></span>
                 </ul>
             </div>
 
-             <div class="col-lg-6">
+            <div class="col-lg-2"></div>
+
+            <div class="col-lg-5">
+                <div class="row header">Your Selected Groceries</div>
                 <ul class="pantry-list">
                     <li class="reserved-item">
-                        <form id="item-form">
-                        <input class="new-item" placeholder="reServe this item" type="text" />
-                        </form>
+<!--                         <form id="item-form">
+                        <input class="new-item" placeholder="reServe this item" type="text"/>
+                        </form> -->
                     </li>
-                    <span class="item-container">
-                    </span>
+                    <span class="pantry-container"></span>
                 </ul>
             </div>
 
         </div>
-</div>
-
     </div>
-        <footer>
-        <p class="text-muted text-muted-footer text-center">
-            <small>
-                &copy; Copyright 2018 reServe. All Rights Reserved
-            </small>
-        </p>
-    </footer>
-    </body>
+
+</div>
+    <footer>
+    <p class="text-muted text-muted-footer text-center">
+        <small>
+            &copy; Copyright 2018 reServe. All Rights Reserved
+        </small>
+    </p>
+</footer>
+</body>
 </html>
 

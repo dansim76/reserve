@@ -93,7 +93,7 @@ $(document).ready(function(){
       };
     };
 
-  pushArray();
+    pushArray();
 
     function clear() {
       $(".createActivityBox").empty();
