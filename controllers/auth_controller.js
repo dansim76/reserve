@@ -1,6 +1,6 @@
 var path = require("path");
 var exports = module.exports = {};
-//sim is cool
+
 
 exports.home = function(req,res){
 	res.sendFile(path.join(__dirname, "../public/home.html"));

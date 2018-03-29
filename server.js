@@ -48,6 +48,7 @@ require("./routes/api-routes.js")(app,passport);
 // Start our server so that it can begin listening to client requests.
 // force: false so that tables do not get overwritten each time server restarts
 models.sequelize.sync({ force: false }).then(function() {
+
   app.listen(PORT, function(err) {
   	if(!err){
   		console.log("App listening on PORT " + PORT);
@@ -56,4 +57,5 @@ models.sequelize.sync({ force: false }).then(function() {
   		console.log(err);
   	}
   });
+
 });
