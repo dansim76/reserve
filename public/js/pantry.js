@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  // Our inventory will go inside the inventoryContainer
-  var $groceryContainer = $(".grocery-container");
 
   // Adding event listeners for deleting, editing, and adding inventory
   // $(document).on("click", "button.type", toggleCustomerType);
@@ -16,13 +14,47 @@ $(document).ready(function() {
     $.get("/api/all", function(data) {
       inventory = data;
       console.log(inventory);
+
+      // for (var i = 0; i < inventory.length; i++) {
+      //   inventory[i] = JSON.stringify(inventory[i]);
+      // };
+
+      var groceryTable = $('<table></table>').addClass('grocery-table');
+      $('.grocery-container').append(groceryTable);
+
+      var row = $('<tr></tr>').addClass('table-row');
+      $('.grocery-container').append(row);
+
       for (var i = 0; i < inventory.length; i++) {
-        $('.donated-item').append(inventory[i].item + " " + inventory[i].quantity + " " + inventory[i].expiration + "<br>");
+        var itemColumn = $('<td></td>').text(inventory[i].item);
+        var quantityColumn = $('<td></td>').text(inventory[i].quantity);
+        var expirationColumn = $('<td></td>').text(inventory[i].expiration);
+        var selectButton = $('<button>').attr("class", "button").text("Select Item");
+        $('.table-row').append(itemColumn + " " + quantityColumn + " " + expirationColumn + " " + selectButton + "<br>");
+
       };
-    })
+
+      // $('.table-row').append(itemColumn + " " + quantityColumn + " " + selectButton + "<br>");
+
+    });
   };
 
+
+            //       row = $('<tr></tr>');
+            //     for (var j = 0; j < 10; j++) {
+            //         var rowData = $('<td></td>').addClass('bar').text('result ' + j);
+            //         row.append(rowData);
+            //     }
+            //     table.append(row);
+            // }
+
+
   getInventory();
+
+  // function createTable() {
+  //   var row = $('<tr></tr>');
+
+  // }
 
   // Toggles complete status
   // function toggleCustomerType(event) {
