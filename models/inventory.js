@@ -17,7 +17,17 @@ module.exports = function(sequelize, DataTypes) {
     expiration: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
-    }
+    },
+    ///addition
+    username: {
+      type: DataTypes.TEXT
+  },
+  usertype: {
+    type: DataTypes.ENUM('grocery', 'pantry'),
+    defaultValue: 'grocery'
+},
+
+
   });
 
 
