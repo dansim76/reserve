@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
-// For Passport 
+// For Passport
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -47,7 +47,7 @@ require("./routes/api-routes.js")(app,passport);
 // Synch database and
 // Start our server so that it can begin listening to client requests.
 // force: false so that tables do not get overwritten each time server restarts
-models.sequelize.sync({ force: true }).then(function() {
+models.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function(err) {
   	if(!err){
   		console.log("App listening on PORT " + PORT);

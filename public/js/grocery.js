@@ -20,62 +20,62 @@ $(document).ready(function(){
         },
         cannedfruit = {
             item: "Canned Fruit",
-            quanitity: $("#cannedfruit").val().trim(),
+            quantity: $("#cannedfruit").val().trim(),
             expiration: $("#cannedfruitexp").val().trim()
         },
         cannedsauce = {
             item: "Canned Sauce",
-            quanitity: $("#cannedsauce").val().trim(),
+            quantity: $("#cannedsauce").val().trim(),
             expiration: $("#cannedsauceexp").val().trim()
         },
         cannedsoup = {
             item: "Canned Soup",
-            quanitity: $("#cannedsoup").val().trim(),
+            quantity: $("#cannedsoup").val().trim(),
             expiration: $("#cannedsoupexp").val().trim()
         },
         freshmeat = {
             item: "Fresh Meat",
-            quanitity: $("#freshmeat").val().trim(),
+            quantity: $("#freshmeat").val().trim(),
             expiration: $("#freshmeatexp").val().trim()
         },
         freshveg = {
             item: "Fresh Vegetables",
-            quanitity: $("#freshveg").val().trim(),
+            quantity: $("#freshveg").val().trim(),
             expiration: $("#freshvegexp").val().trim()
         },
         freshfruit = {
             item: "Fresh Fruit",
-            quanitity: $("#freshfruit").val().trim(),
+            quantity: $("#freshfruit").val().trim(),
             expiration: $("#freshfruitexp").val().trim()
         },
         water = {
             item: "Water",
-            quanitity: $("#water").val().trim(),
+            quantity: $("#water").val().trim(),
             expiration: $("#waterexp").val().trim()
         },
         juice = {
             item: "Juice",
-            quanitity: $("#juice").val().trim(),
+            quantity: $("#juice").val().trim(),
             expiration: $("#juiceexp").val().trim()
         },
         soda = {
             item: "Soda",
-            quanitity: $("#soda").val().trim(),
+            quantity: $("#soda").val().trim(),
             expiration: $("#sodaexp").val().trim()
         },
         pasta = {
             item: "Pasta",
-            quanitity: $("#pasta").val().trim(),
+            quantity: $("#pasta").val().trim(),
             expiration: $("#pastaexp").val().trim()
         },
         wholegrain = {
             item: "Whole Grains (Rice, Quinoa, Etc)",
-            quanitity: $("#wholegrain").val().trim(),
+            quantity: $("#wholegrain").val().trim(),
             expiration: $("#wholegrainexp").val().trim()
         },
         cereal = {
             item: "Cereal",
-            quanitity: $("#cereal").val().trim(),
+            quantity: $("#cereal").val().trim(),
             expiration: $("#cerealexp").val().trim()
             //storeid: $(this).storeid
         },
@@ -92,7 +92,7 @@ $(document).ready(function(){
           };
       };
     };
-        
+
   pushArray();
 
     function clear() {
