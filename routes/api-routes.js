@@ -21,6 +21,7 @@ module.exports = function(app) {
     db.Inventory.findAll({}).then(function(results) {
       // results are available to us inside the .then
       res.json(results);
+      console.log("this is findall" +results)
     });
 
   });
