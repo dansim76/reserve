@@ -21,16 +21,13 @@ module.exports = function(sequelize, DataTypes) {
     ///addition
     username: {
       type: DataTypes.TEXT
-  },
-  usertype: {
-    type: DataTypes.ENUM('grocery', 'pantry'),
-    defaultValue: 'grocery'
-},
+    },
+    usertype: {
+      type: DataTypes.ENUM('grocery', 'pantry'),
+      defaultValue: 'grocery'
+    },
 
-
-  });
-
-
+});
 
 /*   inventory.associate = function (models){ //this will create a foreign key
 
