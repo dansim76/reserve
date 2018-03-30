@@ -1,7 +1,7 @@
 'use strict';
-
+//setting up sequelize database for inventory
 module.exports = function(sequelize, DataTypes) {
-  var Inventory = sequelize.define("Inventory", {
+  var Inventory = sequelize.define("inventory", {
     item: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,38 +13,35 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-
     expiration: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
     },
-    ///addition
     username: {
       type: DataTypes.TEXT
-  },
-  usertype: {
-    type: DataTypes.ENUM('grocery', 'pantry'),
-    defaultValue: 'grocery'
-},
-
-
+    },
+    usertype: {
+      type: DataTypes.ENUM('grocery', 'pantry'),
+      defaultValue: 'grocery'
+    },
+    reserved:{
+      type: DataTypes.Boolean,
+      defaultValue: false
+    },
+    storename:{
+      type:DataTypes.TEXT
+      allowNull: true
+    }
+    
   });
-
-
-
-/*   inventory.associate = function (models){ //this will create a foreign key
-
-    models.inventory.belongsTo(models.stores,{
-      onDelete: "CASCADE", //deletes everything that depends on this foreign key
+  //associating inventory with user table
+  Inventory.associate = function (models){ 
+    Inventory.belongsTo(models.user,{
+      // onDelete: "cascade", //deletes everything that depends on this foreign key
       foreignKey: {
         allowNull: false
       }
-    });
-
-  }; */
-
-
-  // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
-  //http://docs.sequelizejs.com/manual/tutorial/associations.html
+    })
+  };
   return Inventory;
 };

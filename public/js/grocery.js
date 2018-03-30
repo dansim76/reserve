@@ -5,12 +5,8 @@ $(document).ready(function(){
         autoclose: true,
     });
 
-    // function grabUser(req,res){
-    //     console.log("this is user" +req.user.userName);
-    // }
     var patharr =  window.location.pathname.split('/');
     var id =patharr[patharr.length-1];
-    console.log(id)
 
     $("#submit").on("click", function() {
         event.preventDefault();
@@ -56,6 +52,7 @@ $(document).ready(function(){
                 expiration: $("#freshmeatexp").val().trim(),
                 usertype:"grocery",
                 username: id
+                
             },
             freshveg = {
                 item: "Fresh Vegetables",
@@ -112,12 +109,8 @@ $(document).ready(function(){
                 expiration: $("#cerealexp").val().trim(),
                 usertype:"grocery",
                 username: id
-                //storeid: $(this).storeid
             },
         ]);
-
-        console.log(allInventory);
-
         var pushInventory = [];
 
         function pushArray() {
@@ -127,16 +120,12 @@ $(document).ready(function(){
                 };
             };
         };
-
         pushArray();
 
         function clear() {
             $(".createActivityBox").empty();
             $(".createActivityBox").text("Thank you for donating!");
-        }
-
+        };
         clear();
-
     })
-
 });

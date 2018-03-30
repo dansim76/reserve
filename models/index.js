@@ -1,5 +1,5 @@
 'use strict';
-
+//calling dependencies
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
@@ -23,7 +23,7 @@ fs
     var model = sequelize['import'](path.join(__dirname, file));
     db[model.name] = model;
   });
-
+//setting up the association
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
@@ -32,5 +32,5 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
+//exporting the database
 module.exports = db;
