@@ -24,6 +24,14 @@ module.exports = function(sequelize, DataTypes) {
     usertype: {
       type: DataTypes.ENUM('grocery', 'pantry'),
       defaultValue: 'grocery'
+    },
+    reserved: {
+      type: DataTypes.BOOLEAN,
+      defaultVaue: false
+    },
+    pantryname: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
 });
 

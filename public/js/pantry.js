@@ -12,7 +12,24 @@ $(document).ready(function() {
   var inventory = [];
 
   // only add store usernames to array if not existing in array
-  function getStoreNames() {
+
+  function createNewRow(data) {
+    for (var i = 0; i < inventory.length; i++) {
+      var storeName = inventory[i].user.name;
+      var expirationDate = inventory[i].expiration;
+      var newExpDate = expirationDate.slice(0,10);
+
+      var newTr = $("<tr>");
+      newTr.data("inventory", data)
+      newTr.attr("id", id);
+      newTr.append("<td>" + inventory[i].item + "</td>");
+      newTr.append("<td>" + inventory[i].quantity + "</td>");
+      newTr.append("<td>" + newExpDate + "</td>");
+      return newTr;
+    };
+  };
+
+  function getData() {
     $.get("/api/inventories", function(data) {
       inventory = data;
       for (var i = 0; i < inventory.length; i++) {
@@ -21,88 +38,49 @@ $(document).ready(function() {
           storeNames.push(newName)
         }
       }
+
       var groceryTable = $('<table></table>').addClass('grocery-table');
       $('.grocery-container').append(groceryTable);
 
-      for (var i = 0; i < storeNames.length; i++) {
-        var groceryRow = $('<tr></tr>').addClass('store-name').attr('id', storeNames[i]).text(storeNames[i]);
-        $('.grocery-table').append(groceryRow);
-      }
+        var rowsToAdd = [];
+        for (var i = 0; i < inventory.length; i++) {
+          rowsToAdd.push(createNewRow(inventory[i]));
+        }
+        // renderAuthorList(rowsToAdd);
+        // nameInput.val("");
+      });
     console.log(storeNames);
-    });
-  };
+  }
 
-  getStoreNames();
+      // for (var i = 0; i < inventory.length; i++) {
+      //   var storeName = inventory[i].user.name
+      //   var userName = inventory[i].username;
+      //   var item = inventory[i].item;
+      //   var quantity = inventory[i].quantity;
+        // var expirationDate = inventory[i].expiration;
+        // var newExpDate = expirationDate.slice(0,10);
+      //   var selectButton = $('<button>').attr("class", "select-button").attr("id", id).text("Select Item");
+      //   var allVars = (item + quantity + newExpDate);
+      //   var allVarsRow = $('<tr></tr>').attr("id", "rowNumber" + i).text(allVars);
 
-  // // This function grabs inventory from the database and updates the view
-  function getInventory() {
+        // $('#'+inventory[i].user.name).append(allVarsRow);
+      //   $('#rowNumber'+i).append(selectButton);
+
+  getData();
+
+  function update() {
     $.get("/api/inventories", function(data) {
       inventory = data;
-      console.log(inventory);
-
-      for (var i = 0; i < inventory.length; i++) {
-        var storeName = inventory[i].user.name
-        console.log(storeName);
-        var userName = inventory[i].username;
-        var item = inventory[i].item;
-        var quantity = inventory[i].quantity;
-        var expirationDate = inventory[i].expiration;
-        var newExpDate = expirationDate.slice(0,10);
-        var selectButton = $('<button>').attr("class", "select-button").attr("id", id).text("Select Item");
-        var allVars = (item + " " + quantity + " " + newExpDate);
-        var allVarsRow = $('<tr></tr>').attr("id", "rowNumber" + i).text(allVars);
-
-        $('#'+inventory[i].user.name).append(allVarsRow);
-        $('#rowNumber'+i).append(selectButton);
-      };
+      inventory.updateAttributes({
+        reserved: true,
+        pantryname: id
+      })
     });
   };
 
-  getInventory();
-
-  // $(".select-button").on("click", function(event) {
-  //   event.preventDefault();
-
-    // var burgerInfo = {
-    //   burger_id: $(this).children(".burger_id").val(),
-    //   customer: $(this).children(".custom-input").val()
-    // };
-
-  //   $.ajax({
-  //     method: "PUT",
-  //     url: "/api/all",
-  //     data: burgerInfo
-  //   }).then(function(data) {
-  //     // reload page to display devoured burger in proper column
-  //     location.reload();
-  //   });
-  // });
-
-  // Toggles complete status
-  // function toggleCustomerType(event) {
-  //   event.stopPropagation();
-  //   var inventory = $(this).parent().data("inventory");
-  //   inventory.grocery = !inventory.grocery;
-  //   updateTodo(inventory);
-  // }
-
-  // This function updates inventory in our database
-  // function updateInventory(inventory) {
-  //   $.ajax({
-  //     method: "PUT",
-  //     url: "/api/inventory",
-  //     data: inventory
-  //   }).then(getInventory);
-  // }
-
-
-  //   $newInputRow.find("button.delete").data("id", inventory.id);
-  //   $newInputRow.find("input.edit").css("display", "none");
-  //   $newInputRow.data("inventory", inventory);
-  //   if (inventory.grocery) {
-  //     $newInputRow.find("span").css("text-decoration", "line-through");
-  //   }
-  //   return $newInputRow;
-  // }
+  $(".select-button").on("click", function(event) {
+    event.preventDefault();
+    update();
+  });
 
 });
