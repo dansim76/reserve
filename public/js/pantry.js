@@ -78,9 +78,10 @@ $(document).ready(function() {
     });
   };
 
-  $(".select-button").on("click", function(event) {
-    event.preventDefault();
-    update();
+
+  $('.btn-submit').click(function() {
+      window.location.href = '/pantryReserved/:id';
+      return false;
   });
 
 });

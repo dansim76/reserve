@@ -131,4 +131,10 @@ $(document).ready(function() {
   //     .then(getStores);
   // }
   // }
+
+    $('.btn-submit').click(function() {
+      window.location.href = '/pantryReserved/' + id;
+      return false;
+  });
+
 })
