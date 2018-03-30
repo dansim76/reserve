@@ -16,6 +16,9 @@ module.exports = function(app, passport) {
     // home route loads home.html (without all that flashy stuff)
     app.get("/home", authController.home);
 
+    // about route loads about.html
+    app.get("/about", authController.about);
+
     // registration route loads signup.html
     app.get("/signup", authController.signup);
 
@@ -37,7 +40,6 @@ module.exports = function(app, passport) {
         else{
             res.redirect('/pantry/' + req.user.username);
         }
-
     })
 
 /*    app.post('/signin', passport.authenticate('local-signin', {
@@ -56,7 +58,6 @@ module.exports = function(app, passport) {
         else{
             res.redirect('/pantry/' + req.user.username);
         }
-
     })
 
     app.get("/logout", authController.logout);
@@ -71,9 +72,11 @@ module.exports = function(app, passport) {
     // grocery route loads grocery.html
     app.get("/grocery/:username?", isLoggedIn, authController.grocery);
 
-
-    // pantry route loads pantry.html
+    // pantry route loads pantry.html where pantry can select groceries to reserve
     app.get("/pantry/:username?", isLoggedIn, authController.pantry);
+
+    // pantry route loads pantryReserved.html where they will view their reserved groceries
+    app.get("/pantryReserved/:username?", isLoggedIn, authController.pantryReserved);
 
 
 };
