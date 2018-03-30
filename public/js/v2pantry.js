@@ -1,78 +1,111 @@
 $(document).ready(function() {
-  // Getting references to the name inout and author container, as well as the table body
-
+  // Getting username from URL
   var patharr =  window.location.pathname.split('/');
   var id = patharr[patharr.length-1];
-  console.log(id)
 
-  // Getting references to the name inout and author container, as well as the table body
+  // Getting references to the name input and author container, as well as the table body
   var groceryPrepend = $("thead");
-  var groceryList = $("tbody");
   var groceryContainer = $(".grocery-container");
-  var groceryArray = [];
+  var groceryTable = $(".grocery-table");
+
+  var pantryContainer = $(".grocery-container");
+  var pantryTable = $(".pantry-table");
 
   // Adding event listeners to the form to create a new object, and the button to delete
   // an Author
   // $(document).on("click", ".delete-author", handleDeleteButtonPress);
 
   // Getting the intiial list of Authors
-  getStores();
-
-
-  // function createGroceryArray(inventoryData) {
-  //   var newStore = $("<table>" + "</table>")
-  //   newStore.data("inventory", inventoryData);
-  //   console.log(inventoryData);
-  //   // var groceryTable = $("<table>" + "</table>")
-  //   // var groceryName = inventoryData.user.name;
-  //   for (var i = 0; i < inventoryData.length; i++) {
-  //     if (groceryArray.indexOf(groceryName) === -1) {
-  //       groceryArray.push(groceryName)
-  //     }
-  //   }
-  //   console.log(groceryArray);
-  // //   // groceryTable.prepend(groceryName)
-  // };
-  // createGroceryArray();
-
-  // createGroceryRow();
+  // getGroceryStores();
+  getInventoryList();
+  getPantryList();
 
   // Function for creating a new list row for authors
   function createInventoryRow(inventoryData) {
+    // Slice expiration date
     var expirationDate = inventoryData.expiration;
     var newExpDate = expirationDate.slice(0,10);
-    console.log(newExpDate);
+    var newTr = $("<tr>").attr("id", inventoryData.id)
 
-    var newTr = $("<tr>");
-    newTr.data("inventory", inventoryData);
-    newTr.append("<td>" + inventoryData.item + "</td>");
-    newTr.append("<td> " + inventoryData.quantity + "</td>");
-    newTr.append("<td>" + inventoryData.expiration + "</td>");
-    newTr.append("<td>" + inventoryData.id + "</td>");
-    return newTr;
+    if (inventoryData.reserved === null) {
+      var selectButton = $("<button>").text("Select").attr({
+        class: "select-button",
+        id: inventoryData.id
+      });
+      newTr.data("inventory", inventoryData);
+      newTr.append("<td>" + inventoryData.user.name + "</td>");
+      newTr.append("<td>" + inventoryData.item + "</td>");
+      newTr.append("<td> " + inventoryData.quantity + "</td>");
+      newTr.append("<td>" + newExpDate + "</td>");
+      newTr.append(selectButton);
+      return newTr;
+    }
   };
 
-  // Function for retrieving authors and getting them ready to be rendered to the page
-  function getStores() {
+  function createPantryRow(inventoryData) {
+    // Slice expiration date
+    var expirationDate = inventoryData.expiration;
+    var newExpDate = expirationDate.slice(0,10);
+
+    var newTr = $("<tr>").attr("id", inventoryData.id);
+    if ((inventoryData.reserved != null) && (inventoryData.pantryname === id)) {
+      var selectButton = $("<button>").text("Select").attr({
+        class: "select-button",
+        id: inventoryData.id
+        });
+      newTr.data("inventory", inventoryData);
+      newTr.append("<td>" + inventoryData.user.name + "</td>");
+      newTr.append("<td>" + inventoryData.item + "</td>");
+      newTr.append("<td> " + inventoryData.quantity + "</td>");
+      newTr.append("<td>" + newExpDate + "</td>");
+      newTr.append(selectButton);
+      return newTr;
+    }
+  };
+
+  // Retreives SQL data and creates variable inventoryData push to createInventoryRow
+  function getInventoryList() {
     $.get("/api/inventories", function(data) {
       var rowsToAdd = [];
       // var dataArray = [];
       for (var i = 0; i < data.length; i++) {
         rowsToAdd.push(createInventoryRow(data[i]));
-        // dataArray.push(createGroceryArray(data[i]))
       };
-      renderStoreList(rowsToAdd);
-      // renderStoreList(dataArray);
+      renderInventoryList(rowsToAdd);
     });
   }
 
-  // A function for rendering the list of authors to the page
-  function renderStoreList(rows) {
-    groceryList.children().not(":last").remove();
+  // Retreives SQL data and creates variable inventoryData push to createPantryRow
+  function getPantryList() {
+    $.get("/api/inventories", function(data) {
+      var rowsToAdd = [];
+      // var dataArray = [];
+      for (var i = 0; i < data.length; i++) {
+        rowsToAdd.push(createPantryRow(data[i]));
+      };
+      renderPantryList(rowsToAdd);
+    });
+  }
+
+
+  // Renders inventory to the page
+  function renderInventoryList(rows) {
+    groceryTable.children().not(":last").remove();
     groceryContainer.children(".alert").remove();
     if (rows.length) {
-      console.log(rows);
-      groceryList.prepend(rows);
+      groceryTable.prepend(rows);
+    }
+    else {
+      renderEmpty();
+    }
+  };
+
+    // Renders inventory to the page
+  function renderPantryList(rows) {
+    pantryTable.children().not(":last").remove();
+    pantryContainer.children(".alert").remove();
+    if (rows.length) {
+      pantryTable.prepend(rows);
     }
     else {
       renderEmpty();
@@ -89,7 +122,7 @@ $(document).ready(function() {
 
   // Function for handling what happens when the delete button is pressed
   // function handleDeleteButtonPress() {
-  //   var listItemData = $(this).parent("td").parent("tr").data("author");
+  //   var listItemData = $(this).parent("td").parent("tr").data("inventoryData.user.name");
   //   var id = listItemData.id;
   //   $.ajax({
   //     method: "DELETE",
@@ -97,4 +130,5 @@ $(document).ready(function() {
   //   })
   //     .then(getStores);
   // }
-});
+  // }
+})
