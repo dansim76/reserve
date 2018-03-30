@@ -1,4 +1,4 @@
-// *********************************************************************************
+// *************// *********************************************************************************
 // api-routes.js - this file offers a set of routes for displaying and saving data to the db
 // *********************************************************************************
 
@@ -12,13 +12,15 @@ var db = require("../models");
 module.exports = function(app) {
 
   // Get all chirps
-  app.get("/api/all", function(req, res) {
+  app.get("/api/inventories", function(req, res) {
 
     // Finding all Chirps, and then returning them to the user as JSON.
     // Sequelize queries are asynchronous, which helps with perceived speed.
     // If we want something to be guaranteed to happen after the query, we'll use
     // the .then function
-    db.Inventory.findAll({}).then(function(results) {
+    db.inventory.findAll({
+      include:[db.user]
+    }).then(function(results) {
       // results are available to us inside the .then
       res.json(results);
       console.log("this is findall" +results)
@@ -26,14 +28,15 @@ module.exports = function(app) {
 
   });
 
-  app.get("/api/allgrocery", function(req, res) {
+  app.get("/api/allinventories", function(req, res) {
 
     // Finding all Chirps, and then returning them to the user as JSON.
     // Sequelize queries are asynchronous, which helps with perceived speed.
     // If we want something to be guaranteed to happen after the query, we'll use
     // the .then function
-    db.Inventories.findAll({
-      where:{usertype: "grocery"}
+    db.inventory.findAll({
+      where:{usertype: "grocery"},
+      include:[db.user]
     }).then(function(results) {
       // results are available to us inside the .then
       console.log("this is findall features" + results)
@@ -43,9 +46,19 @@ module.exports = function(app) {
   });
 
   app.post("/api/inventories", function(req, res) {
-    db.Inventory.create(req.body).then(function(results) {
-      console.log("this is api post" +results)
-      res.json(results);
+    db.user.findOne({where:{username:req.body.username}
+    }).then(function(result){
+      var id = result.id;
+      var fullInventoryObject = req.body;
+      fullInventoryObject.userId = id;
+
+      db.inventory.create(fullInventoryObject).then(function(results) {
+        console.log("this is api post" +results)
+        res.json(results);
+
+
+    })
+
     });
   });
 

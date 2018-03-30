@@ -3,31 +3,24 @@ $(document).ready(function() {
   // Adding event listeners for deleting, editing, and adding inventory
   // $(document).on("click", "button.type", toggleCustomerType);
 
+  var patharr =  window.location.pathname.split('/');
+  var id = patharr[patharr.length-1];
+  console.log(id)
+
   // Our initial inventory array
   var storeNames = [];
   var inventory = [];
 
-
-  // function getInventory() {
-  //   $.get("/api/all", function(data) {
-  //     inventory = data;
-  //     console.log(inventory);
-  //   });
-  // };
-
-  // getInventory();
-
   // only add store usernames to array if not existing in array
   function getStoreNames() {
-    $.get("/api/all", function(data) {
+    $.get("/api/inventories", function(data) {
       inventory = data;
       for (var i = 0; i < inventory.length; i++) {
-        var newName = inventory[i].username;
+        var newName = inventory[i].user.name;
         if (storeNames.indexOf(newName) === -1) {
           storeNames.push(newName)
         }
       }
-
       var groceryTable = $('<table></table>').addClass('grocery-table');
       $('.grocery-container').append(groceryTable);
 
@@ -35,21 +28,6 @@ $(document).ready(function() {
         var groceryRow = $('<tr></tr>').addClass('store-name').attr('id', storeNames[i]).text(storeNames[i]);
         $('.grocery-table').append(groceryRow);
       }
-
-    //   var row = $('<tr></tr>').addClass('inventory-row');
-    //   $('.grocery-container').append(row);
-
-    //   for (var i = 0; i < inventory.length; i++) {
-
-
-
-    //     inventory[i].username
-    //     $('#'+inventory[i].username).append
-    //   }
-
-
-    // })
-
     console.log(storeNames);
     });
   };
@@ -58,27 +36,47 @@ $(document).ready(function() {
 
   // // This function grabs inventory from the database and updates the view
   function getInventory() {
-    $.get("/api/all", function(data) {
+    $.get("/api/inventories", function(data) {
       inventory = data;
       console.log(inventory);
 
       for (var i = 0; i < inventory.length; i++) {
+        var storeName = inventory[i].user.name
+        console.log(storeName);
         var userName = inventory[i].username;
         var item = inventory[i].item;
         var quantity = inventory[i].quantity;
         var expirationDate = inventory[i].expiration;
         var newExpDate = expirationDate.slice(0,10);
-        var selectButton = $('<button>').attr("class", "button").text("Select Item");
+        var selectButton = $('<button>').attr("class", "select-button").attr("id", id).text("Select Item");
         var allVars = (item + " " + quantity + " " + newExpDate);
-        var allVarsRow = $('<tr></tr>').attr("id", "appendButton" + i).text(allVars);
+        var allVarsRow = $('<tr></tr>').attr("id", "rowNumber" + i).text(allVars);
 
-        $('#'+inventory[i].username).append(allVarsRow);
-        $('#appendButton'+i).append(selectButton);
+        $('#'+inventory[i].user.name).append(allVarsRow);
+        $('#rowNumber'+i).append(selectButton);
       };
     });
   };
 
   getInventory();
+
+  // $(".select-button").on("click", function(event) {
+  //   event.preventDefault();
+
+    // var burgerInfo = {
+    //   burger_id: $(this).children(".burger_id").val(),
+    //   customer: $(this).children(".custom-input").val()
+    // };
+
+  //   $.ajax({
+  //     method: "PUT",
+  //     url: "/api/all",
+  //     data: burgerInfo
+  //   }).then(function(data) {
+  //     // reload page to display devoured burger in proper column
+  //     location.reload();
+  //   });
+  // });
 
   // Toggles complete status
   // function toggleCustomerType(event) {

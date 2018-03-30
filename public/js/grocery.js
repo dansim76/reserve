@@ -5,11 +5,8 @@ $(document).ready(function(){
         autoclose: true,
     });
 
-    // function grabUser(req,res){
-    //     console.log("this is user" +req.user.userName);
-    // }
     var patharr =  window.location.pathname.split('/');
-    var id =patharr[patharr.length-1];
+    var id = patharr[patharr.length-1];
     console.log(id)
 
     $("#submit").on("click", function() {
@@ -48,7 +45,7 @@ $(document).ready(function(){
                 quantity: $("#cannedsoup").val().trim(),
                 expiration: $("#cannedsoupexp").val().trim(),
                 userType:"grocery",
-                userName: id
+                username: id
             },
             freshmeat = {
                 item: "Fresh Meat",
