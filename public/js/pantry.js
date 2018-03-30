@@ -12,6 +12,23 @@ $(document).ready(function() {
   var inventory = [];
 
   // only add store usernames to array if not existing in array
+
+  function createNewRow(data) {
+    for (var i = 0; i < inventory.length; i++) {
+      var storeName = inventory[i].user.name;
+      var expirationDate = inventory[i].expiration;
+      var newExpDate = expirationDate.slice(0,10);
+
+      var newTr = $("<tr>");
+      newTr.data("inventory", data)
+      newTr.attr("id", id);
+      newTr.append("<td>" + inventory[i].item + "</td>");
+      newTr.append("<td>" + inventory[i].quantity + "</td>");
+      newTr.append("<td>" + newExpDate + "</td>");
+      return newTr;
+    };
+  };
+
   function getData() {
     $.get("/api/inventories", function(data) {
       inventory = data;
@@ -25,31 +42,15 @@ $(document).ready(function() {
       var groceryTable = $('<table></table>').addClass('grocery-table');
       $('.grocery-container').append(groceryTable);
 
-      for (var i = 0; i < storeNames.length; i++) {
-
-        var groceryRow = $('<tr></tr>').addClass('store-name').attr('id', storeNames[i]).text(storeNames[i]);
-        $('.grocery-table').append(groceryRow);
-
-        var titleRow = $('<tr></tr>').addClass('title-row');
-        titleRow.append("<td> " + "Item " + "</td>");
-        titleRow.append("<td> " + "Quantity " + "</td>");
-        titleRow.append("<td> " + "Expiration " + "</td>");
-        return titleRow
-      }
-
-      for (var i = 0; i < inventory.length; i++) {
-        var storeName = inventory[i].user.name;
-        var expirationDate = inventory[i].expiration;
-        var newExpDate = expirationDate.slice(0,10);
-
-        var newTr = $("<tr>");
-        newTr.data("inventory", data)
-        $('#'+inventory[i].user.name).attr("id", id);
-        $('#'+inventory[i].user.name).append("<td>" + inventory[i].item + "</td>");
-        $('#'+inventory[i].user.name).append("<td>" + inventory[i].quantity + "</td>");
-        $('#'+inventory[i].user.name).append("<td>" + newExpDate + "</td>");
-        return newTr;
-      };
+        var rowsToAdd = [];
+        for (var i = 0; i < inventory.length; i++) {
+          rowsToAdd.push(createNewRow(inventory[i]));
+        }
+        // renderAuthorList(rowsToAdd);
+        // nameInput.val("");
+      });
+    console.log(storeNames);
+  }
 
       // for (var i = 0; i < inventory.length; i++) {
       //   var storeName = inventory[i].user.name
@@ -64,9 +65,6 @@ $(document).ready(function() {
 
         // $('#'+inventory[i].user.name).append(allVarsRow);
       //   $('#rowNumber'+i).append(selectButton);
-          console.log(storeNames);
-      });
-  };
 
   getData();
 
@@ -79,6 +77,7 @@ $(document).ready(function() {
       })
     });
   };
+
 
   $(".select-button").on("click", function(event) {
     event.preventDefault();

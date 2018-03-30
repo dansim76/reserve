@@ -30,16 +30,16 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             notEmpty: true
         },
-        
+
         zip: {
             type: DataTypes.STRING,
             notEmpty: true
         },
-        
+
         username: {
             type: DataTypes.TEXT
         },
-        
+
         password: {
             type: DataTypes.STRING,
             allowNull: false
@@ -54,6 +54,7 @@ module.exports = function(sequelize, DataTypes) {
     });
     //associating user with inventory table 
     User.associate = function(models) {
+
         User.hasMany(models.inventory, {
             onDelete: "cascade"
         });

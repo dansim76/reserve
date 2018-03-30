@@ -11,7 +11,10 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Monoton|Montserrat" rel="stylesheet">
-    <script src="../js/pantry.js" ></script>
+
+<!--     <script src="../js/pantry.js"></script> -->
+<script src="../js/v2pantry.js"></script>
+
 </head>
 <!-- id="data" type="application/json -->
 <body>
@@ -35,45 +38,55 @@
     <div class="jumbotron container">
         <div class="row">
             <div class="col-lg-5">
-                <div class="row header">Choose Your Groceries</div>
-                <ul class="grocery-list">
-                    <li class="donated-item">
-<!--                         <form id="item-form">
-                        <input class="new-item">
-                        </form> -->
-                        <span class="grocery-container">
-                                <!-- <button class="button"></button> -->
-                    </li>
-                    <span class="grocery-container"></span>
-                </ul>
+
+                <div class="row">
+                    <div class="row header">Choose Your Groceries</div>
+                </div>
+                <br>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Expiration Date</th>
+                            <th>Select</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <button type="submit" class="btn btn-success">Submit</button>
 
             </div>
-
-            <div class="col-lg-2"></div>
-
-            <div class="col-lg-5">
-                <div class="row header">Your Selected Groceries</div>
-                <ul class="pantry-list">
-                    <li class="reserved-item">
-<!--                         <form id="item-form">
-                        <input class="new-item" placeholder="reServe this item" type="text"/>
-                        </form> -->
-                    </li>
-                    
-                    <span class="pantry-container"></span>
-                </ul>
-            </div>
-
         </div>
     </div>
 
-</div>
+            <div class="col-lg-2"></div>
+
+    <div class="jumbotron container">
+        <div class="row">
+            <div class="col-lg-5">
+
+
+                <div class="row">
+                    <div class="row header">Your Selected Groceries</div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="pantry-container"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <footer>
-    <p class="text-muted text-muted-footer text-center">
-        <small>
-            &copy; Copyright 2018 reServe. All Rights Reserved
-        </small>
-    </p>
-</footer>
+        <p class="text-muted text-muted-footer text-center">
+            <small>
+                &copy; Copyright 2018 reServe. All Rights Reserved
+            </small>
+        </p>
+    </footer>
+
 </body>
 </html>
