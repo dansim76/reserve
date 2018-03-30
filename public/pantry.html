@@ -36,42 +36,57 @@
     <div class="jumbotron container">
         <div class="row">
             <div class="col-lg-5">
-                <div class="row">
-                    <div class="row header">Choose Your Groceries</div>
-                </div>
-                <br>
-<!--                 <div class="row">
-                    <div class="grocery-container"></div>
-                </div> -->
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Quantity</th>
-                            <th>Expiration Date</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <div class="row">
+                    <div class="row header grocery-container">Choose Your Groceries</div>
+                </div>
+
+                <div class="row grocery-container">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Store Name</th>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Expiration Date</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody class="grocery-table"></tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
 
-            <div class="col-lg-2"></div>
+    <div class="col-lg-2"></div>
 
     <div class="jumbotron container">
         <div class="row">
             <div class="col-lg-5">
+
                 <div class="row">
-                    <div class="row header">Your Selected Groceries</div>
+                    <div class="row header grocery-container">Your Selected Groceries</div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="pantry-container"></div>
+
+                <div class="row pantry-container">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Store Name</th>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Expiration Date</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody class="pantry-table"></tbody>
+                    </table>
                 </div>
+
             </div>
         </div>
     </div>
