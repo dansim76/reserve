@@ -51,7 +51,7 @@ $(document).ready(function() {
     if ((inventoryData.reserved != null) && (inventoryData.pantryname === id)) {
       var selectButton = $("<button>").text("Select").attr({
         class: "select-button",
-        id: inventoryData.id
+        id: id
         });
       newTr.data("inventory", inventoryData);
       newTr.append("<td>" + inventoryData.user.name + "</td>");
@@ -121,16 +121,15 @@ $(document).ready(function() {
   }
 
   // Function for handling what happens when the delete button is pressed
-  // function handleDeleteButtonPress() {
-  //   var listItemData = $(this).parent("td").parent("tr").data("inventoryData.user.name");
-  //   var id = listItemData.id;
-  //   $.ajax({
-  //     method: "DELETE",
-  //     url: "/api/inventories/" + id
-  //   })
-  //     .then(getStores);
-  // }
-  // }
+  function handleDeleteButtonPress() {
+    var listItemData = $(this).parent("td").parent("tr").data("inventoryData.user.name");
+    var id = listItemData.id;
+    $.ajax({
+      method: "DELETE",
+      url: "/api/inventories/" + id
+    })
+      .then(getStores);
+  }
 
     $('.btn-submit').click(function() {
       window.location.href = '/pantryReserved/' + id;

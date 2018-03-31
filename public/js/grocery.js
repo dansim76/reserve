@@ -6,8 +6,8 @@ $(document).ready(function(){
     });
 
     var patharr =  window.location.pathname.split('/');
-
-    var id =patharr[patharr.length-1];
+    var id = patharr[patharr.length-1];
+    console.log(id)
 
     $("#submit").on("click", function() {
         event.preventDefault();
@@ -123,8 +123,11 @@ $(document).ready(function(){
                 usertype:"grocery",
                 username: id,
                 pantryname: null
-            },
-        ]);
+            }
+        ])
+
+        console.log(allInventory);
+
         var pushInventory = [];
 
         function pushArray() {
@@ -134,12 +137,15 @@ $(document).ready(function(){
                 };
             };
         };
+
         pushArray();
 
         function clear() {
             $(".createActivityBox").empty();
-            $(".createActivityBox").text("Thank you for donating!");
-        };
+            $(".createActivityBox").text("Thank you for donating!").css({"background-color": "#2c3e50", "color": "white","font-size": "200%", "margin": "auto", "width": "50%", "text-align": "center"});
+            }
+
         clear();
     })
+
 });
