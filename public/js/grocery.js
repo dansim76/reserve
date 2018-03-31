@@ -123,8 +123,8 @@ $(document).ready(function(){
                 usertype:"grocery",
                 username: id,
                 pantryname: null
-            },
-        ]);
+            }
+        ])
 
         console.log(allInventory);
 
@@ -142,11 +142,10 @@ $(document).ready(function(){
 
         function clear() {
             $(".createActivityBox").empty();
-            $(".createActivityBox").text("Thank you for donating!");
-        }
+            $(".createActivityBox").text("Thank you for donating!").css({"background-color": "#2c3e50", "color": "white","font-size": "200%", "margin": "auto", "width": "50%", "text-align": "center"});
+            }
 
         clear();
-
     })
 
 });

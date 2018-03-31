@@ -64,6 +64,14 @@ $(document).ready(function() {
     groceryContainer.append(alertDiv);
   }
 
+  $('.btn-complete').click(function() {
+      function clear() {
+            $(".pantry-container").empty();
+            $(".pantry-container").text("Enjoy your food!").css({"background-color": "#2c3e50", "color": "white","font-size": "200%", "margin": "auto", "width": "50%", "text-align": "center"});
+      };
+      clear();
+  });
+
   // Function for handling what happens when the delete button is pressed
   // function handleDeleteButtonPress() {
   //   var listItemData = $(this).parent("td").parent("tr").data("inventoryData.user.name");
