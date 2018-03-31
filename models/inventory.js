@@ -25,10 +25,10 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 'grocery'
     },
     reserved:{
-      type: DataTypes.Boolean,
+      type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    storename:{
+    pantryname:{
       type:DataTypes.TEXT
       allowNull: true
     }
