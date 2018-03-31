@@ -11,6 +11,10 @@ module.exports = function(app, passport) {
     app.get("/", authController.reserve);
     // home route loads home.html (without all that flashy stuff)
     app.get("/home", authController.home);
+
+    // about route loads about.html
+    app.get("/about", authController.about);
+
     // registration route loads signup.html
     app.get("/signup", authController.signup);
     // login loads signin.html
@@ -45,6 +49,12 @@ module.exports = function(app, passport) {
     }
     // grocery route loads grocery.html
     app.get("/grocery/:username?", isLoggedIn, authController.grocery);
-    // pantry route loads pantry.html
+
+
+    // pantry route loads pantry.html where pantry can select groceries to reserve
     app.get("/pantry/:username?", isLoggedIn, authController.pantry);
+
+    // pantry route loads pantryReserved.html where they will view their reserved groceries
+    app.get("/pantryReserved/:username?", isLoggedIn, authController.pantryReserved);
+
 };

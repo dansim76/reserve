@@ -13,6 +13,7 @@ exports.reserve = function(req,res){
 }
 //controller to signup page
 exports.signup = function(req,res){
+
 	res.sendFile(path.join(__dirname, "../public/signup.html"));
 }
 //controller to signin page
@@ -27,7 +28,9 @@ exports.grocery = function(req,res){
 exports.pantry = function(req,res){
 	res.sendFile(path.join(__dirname, "../public/pantry.html"));
 }
-//controller to the logout function
+exports.pantryReserved = function(req,res){
+	res.sendFile(path.join(__dirname, "../public/pantryReserved.html"));
+}
 exports.logout = function(req, res){
 	req.session.destroy(function(err){
 		res.redirect('/');

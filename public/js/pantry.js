@@ -1,87 +1,140 @@
 $(document).ready(function() {
-
-  // Adding event listeners for deleting, editing, and adding inventory
-  // $(document).on("click", "button.type", toggleCustomerType);
-
+  // Getting username from URL
   var patharr =  window.location.pathname.split('/');
   var id = patharr[patharr.length-1];
-  console.log(id)
 
-  // Our initial inventory array
-  var storeNames = [];
-  var inventory = [];
+  // Getting references to the name input and author container, as well as the table body
+  var groceryPrepend = $("thead");
+  var groceryContainer = $(".grocery-container");
+  var groceryTable = $(".grocery-table");
 
-  // only add store usernames to array if not existing in array
+  var pantryContainer = $(".grocery-container");
+  var pantryTable = $(".pantry-table");
 
-  function createNewRow(data) {
-    for (var i = 0; i < inventory.length; i++) {
-      var storeName = inventory[i].user.name;
-      var expirationDate = inventory[i].expiration;
-      var newExpDate = expirationDate.slice(0,10);
+  // Adding event listeners to the form to create a new object, and the button to delete
+  // an Author
+  // $(document).on("click", ".delete-author", handleDeleteButtonPress);
 
-      var newTr = $("<tr>");
-      newTr.data("inventory", data)
-      newTr.attr("id", id);
-      newTr.append("<td>" + inventory[i].item + "</td>");
-      newTr.append("<td>" + inventory[i].quantity + "</td>");
+  // Getting the intiial list of Authors
+  // getGroceryStores();
+  getInventoryList();
+  getPantryList();
+
+  // Function for creating a new list row for authors
+  function createInventoryRow(inventoryData) {
+    // Slice expiration date
+    var expirationDate = inventoryData.expiration;
+    var newExpDate = expirationDate.slice(0,10);
+    var newTr = $("<tr>").attr("id", inventoryData.id)
+
+    if (inventoryData.reserved === null) {
+      var selectButton = $("<button>").text("Select").attr({
+        class: "select-button",
+        id: inventoryData.id
+      });
+      newTr.data("inventory", inventoryData);
+      newTr.append("<td>" + inventoryData.user.name + "</td>");
+      newTr.append("<td>" + inventoryData.item + "</td>");
+      newTr.append("<td> " + inventoryData.quantity + "</td>");
       newTr.append("<td>" + newExpDate + "</td>");
+      newTr.append(selectButton);
       return newTr;
-    };
+    }
   };
 
-  function getData() {
+  function createPantryRow(inventoryData) {
+    // Slice expiration date
+    var expirationDate = inventoryData.expiration;
+    var newExpDate = expirationDate.slice(0,10);
+
+    var newTr = $("<tr>").attr("id", inventoryData.id);
+    if ((inventoryData.reserved != null) && (inventoryData.pantryname === id)) {
+      var selectButton = $("<button>").text("Select").attr({
+        class: "select-button",
+        id: inventoryData.id
+        });
+      newTr.data("inventory", inventoryData);
+      newTr.append("<td>" + inventoryData.user.name + "</td>");
+      newTr.append("<td>" + inventoryData.item + "</td>");
+      newTr.append("<td> " + inventoryData.quantity + "</td>");
+      newTr.append("<td>" + newExpDate + "</td>");
+      newTr.append(selectButton);
+      return newTr;
+    }
+  };
+
+  // Retreives SQL data and creates variable inventoryData push to createInventoryRow
+  function getInventoryList() {
     $.get("/api/inventories", function(data) {
-      inventory = data;
-      for (var i = 0; i < inventory.length; i++) {
-        var newName = inventory[i].user.name;
-        if (storeNames.indexOf(newName) === -1) {
-          storeNames.push(newName)
-        }
-      }
-
-      var groceryTable = $('<table></table>').addClass('grocery-table');
-      $('.grocery-container').append(groceryTable);
-
-        var rowsToAdd = [];
-        for (var i = 0; i < inventory.length; i++) {
-          rowsToAdd.push(createNewRow(inventory[i]));
-        }
-        // renderAuthorList(rowsToAdd);
-        // nameInput.val("");
-      });
-    console.log(storeNames);
+      var rowsToAdd = [];
+      // var dataArray = [];
+      for (var i = 0; i < data.length; i++) {
+        rowsToAdd.push(createInventoryRow(data[i]));
+      };
+      renderInventoryList(rowsToAdd);
+    });
   }
 
-      // for (var i = 0; i < inventory.length; i++) {
-      //   var storeName = inventory[i].user.name
-      //   var userName = inventory[i].username;
-      //   var item = inventory[i].item;
-      //   var quantity = inventory[i].quantity;
-        // var expirationDate = inventory[i].expiration;
-        // var newExpDate = expirationDate.slice(0,10);
-      //   var selectButton = $('<button>').attr("class", "select-button").attr("id", id).text("Select Item");
-      //   var allVars = (item + quantity + newExpDate);
-      //   var allVarsRow = $('<tr></tr>').attr("id", "rowNumber" + i).text(allVars);
-
-        // $('#'+inventory[i].user.name).append(allVarsRow);
-      //   $('#rowNumber'+i).append(selectButton);
-
-  getData();
-
-  function update() {
+  // Retreives SQL data and creates variable inventoryData push to createPantryRow
+  function getPantryList() {
     $.get("/api/inventories", function(data) {
-      inventory = data;
-      inventory.updateAttributes({
-        reserved: true,
-        pantryname: id
-      })
+      var rowsToAdd = [];
+      // var dataArray = [];
+      for (var i = 0; i < data.length; i++) {
+        rowsToAdd.push(createPantryRow(data[i]));
+      };
+      renderPantryList(rowsToAdd);
     });
+  }
+
+
+  // Renders inventory to the page
+  function renderInventoryList(rows) {
+    groceryTable.children().not(":last").remove();
+    groceryContainer.children(".alert").remove();
+    if (rows.length) {
+      groceryTable.prepend(rows);
+    }
+    else {
+      renderEmpty();
+    }
   };
 
+    // Renders inventory to the page
+  function renderPantryList(rows) {
+    pantryTable.children().not(":last").remove();
+    pantryContainer.children(".alert").remove();
+    if (rows.length) {
+      pantryTable.prepend(rows);
+    }
+    else {
+      renderEmpty();
+    }
+  };
 
-  $(".select-button").on("click", function(event) {
-    event.preventDefault();
-    update();
+  // Function for handling what to render when there are no authors
+  function renderEmpty() {
+    var alertDiv = $("<div>");
+    alertDiv.addClass("alert alert-danger");
+    alertDiv.text("You must create an Author before you can create a Post.");
+    groceryContainer.append(alertDiv);
+  }
+
+  // Function for handling what happens when the delete button is pressed
+  // function handleDeleteButtonPress() {
+  //   var listItemData = $(this).parent("td").parent("tr").data("inventoryData.user.name");
+  //   var id = listItemData.id;
+  //   $.ajax({
+  //     method: "DELETE",
+  //     url: "/api/inventories/" + id
+  //   })
+  //     .then(getStores);
+  // }
+  // }
+
+    $('.btn-submit').click(function() {
+      window.location.href = '/pantryReserved/' + id;
+      return false;
   });
 
-});
+})
