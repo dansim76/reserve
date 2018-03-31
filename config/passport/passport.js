@@ -7,6 +7,7 @@ var bCrypt = require('bcrypt-nodejs');
 module.exports = function(passport, user) {
     var User = user;
     var LocalStrategy = require('passport-local').Strategy;
+    
 	//serialize
 	passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -20,15 +21,18 @@ module.exports = function(passport, user) {
             } 
             else {
                 done(user.errors, null);
-            }   
+            }
+            
         });
     });
     
     passport.use('local-signup', new LocalStrategy(
+        
         {
             usernameField: 'username',
             passwordField: 'password',
-            passReqToCallback: true // allows us to pass back the entire request to the callback          
+            passReqToCallback: true // allows us to pass back the entire request to the callback
+            
         },function(req, username, password, done) {
             var generateHash = function(password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
@@ -71,19 +75,23 @@ module.exports = function(passport, user) {
             });
         }
     ));
+    
     //LOCAL SIGNIN
     passport.use('local-signin', new LocalStrategy(
+        
         {// by default, local strategy uses username and password
             usernameField: 'username',
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
-        function(req, username, password, done) {  
+        function(req, username, password, done) {
+            
             var User = user;
             //the isValidPassword function compares the password entered with the bCrypt comparison method since we stored our password with bcrypt.
             var isValidPassword = function(userpass, password) {
                 return bCrypt.compareSync(password, userpass);
             }
+            
             User.findOne({
                 where: {
                     username: username
@@ -100,6 +108,7 @@ module.exports = function(passport, user) {
                         message: 'Incorrect password.'
                     });
                 }
+                
                 var userinfo = user.get();
                 return done(null, userinfo);
                 
@@ -112,4 +121,6 @@ module.exports = function(passport, user) {
             });
         }
     ));
+    
+    
 }//end all module.export
