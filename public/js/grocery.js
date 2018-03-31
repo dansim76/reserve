@@ -6,8 +6,8 @@ $(document).ready(function(){
     });
 
     var patharr =  window.location.pathname.split('/');
-    var id = patharr[patharr.length-1];
-    console.log(id)
+
+    var id =patharr[patharr.length-1];
 
     $("#submit").on("click", function() {
         event.preventDefault();
@@ -125,9 +125,6 @@ $(document).ready(function(){
                 pantryname: null
             },
         ]);
-
-        console.log(allInventory);
-
         var pushInventory = [];
 
         function pushArray() {
@@ -137,16 +134,12 @@ $(document).ready(function(){
                 };
             };
         };
-
         pushArray();
 
         function clear() {
             $(".createActivityBox").empty();
             $(".createActivityBox").text("Thank you for donating!");
-        }
-
+        };
         clear();
-
     })
-
 });
