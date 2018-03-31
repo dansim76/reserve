@@ -1,5 +1,5 @@
 'use strict';
-//setting up sequelize database for inventory
+
 module.exports = function(sequelize, DataTypes) {
   var Inventory = sequelize.define("inventory", {
     item: {
@@ -17,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
     },
+    ///addition
     username: {
       type: DataTypes.TEXT
     },
@@ -24,25 +25,28 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.ENUM('grocery', 'pantry'),
       defaultValue: 'grocery'
     },
-    reserved:{
+    reserved: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
+      defaultVaue: false
     },
-    pantryname:{
-      type:DataTypes.TEXT
+    pantryname: {
+      type: DataTypes.TEXT, //was not working in previous github compile
       allowNull: true
     }
-    
-  });
-  //associating inventory with user table
-  Inventory.associate = function (models){ 
+});
+
+  Inventory.associate = function (models){ //this will create a foreign key
+
     Inventory.belongsTo(models.user,{
-      // onDelete: "cascade", //deletes everything that depends on this foreign key
+      // onDelete: "CASCADE", //deletes everything that depends on this foreign key
       foreignKey: {
         allowNull: false
       }
-    })
+    });
   };
 
+
+  // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
+  //http://docs.sequelizejs.com/manual/tutorial/associations.html
   return Inventory;
 };
