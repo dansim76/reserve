@@ -140,7 +140,7 @@ $(document).ready(function(){
 
         pushArray();
 
-        function clear() {
+        function clear() { //clears the div but doesn't clear the database yet
             $(".createActivityBox").empty();
             $(".createActivityBox").text("Thank you for donating!").css({"background-color": "#2c3e50", "color": "white","font-size": "200%", "margin": "auto", "width": "50%", "text-align": "center"});
             }
