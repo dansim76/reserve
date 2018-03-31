@@ -5,6 +5,7 @@ var db = require("../models");
 module.exports = function(app) {
 
   app.get("/api/inventories", function(req, res) {
+
     db.inventory.findAll({
       include:[db.user]
     }).then(function(results) {
@@ -31,36 +32,18 @@ module.exports = function(app) {
       var fullInventoryObject = req.body;
       fullInventoryObject.userId = id;
 
+      
       db.inventory.create(fullInventoryObject).then(function(results) {
         console.log("this is api post" +results)
         res.json(results);
-      })
+        
+    })
     });
   });
+};// *********************************************************************************
+// api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// *********************************************************************************
 
-  // app.delete("/api/inventories/:id",function(req,res){
-  //   db.Inventory.destory({
-  //     where:{
-  //       id: req.params.id
-  //     }
-  //   }).then(function(dbInventory){
-  //     res.json(dbInventory);
-  //   })
-
-
-  // })
-  // app.put("/api/posts",function(req,res){
-
-  //   db.Inventory.update({
-  //     req.body,
-  //     {
-  //       where:{
-  //         id:req.body.id
-  //       }
-  //     }
-  //   }).then(function(dbInventory){
-  //     res.json(dbInventory)
-  //   })
-  // })
+// Dependencies
 
 };

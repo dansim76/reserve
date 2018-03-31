@@ -38,24 +38,20 @@ require('./config/passport/passport.js')(passport, models.user);
 //in the future when we change to handlebars, controllers will monitor the handlebars, and we would not need routes folder anymore
 require("./routes/html-routes.js")(app,passport);
 require("./routes/api-routes.js")(app,passport);
-
-
 // Import api routes and give the server access to them.
 //require("./routes/api-routes.js")(app);
-
 ////////////////////////////////////////
 // Synch database and
 // Start our server so that it can begin listening to client requests.
 // force: false so that tables do not get overwritten each time server restarts
 models.sequelize.sync({ force: false }).then(function() {
-
-  app.listen(PORT, function(err) {
-  	if(!err){
-  		console.log("App listening on PORT " + PORT);
-  	}
-  	else{
-  		console.log(err);
-  	}
-  });
+	app.listen(PORT, function(err) {
+		if(!err){
+			console.log("App listening on PORT " + PORT);
+		}
+		else{
+			console.log(err);
+		}
+	});
 
 });
